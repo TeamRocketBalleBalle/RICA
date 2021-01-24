@@ -79,7 +79,7 @@ nav {
 .cover-text p {
   font-size: 27px;
   line-height: 44px;
-
+  padding-left: 8px;
   color: #5b6cdb;
 }
 .cover-text {
@@ -92,6 +92,7 @@ nav {
   width: auto; */
   z-index: 1;
   width: auto;
+  transition: 1s ease;
 }
 .cover-img img {
   max-width: 100%;
@@ -114,8 +115,8 @@ nav {
 /* Mobile CSS */
 @media screen and (max-width: 1024px) {
   body {
-    background: blanchedalmond;
     transition: 1s ease;
+    overflow: hidden;
   }
   .cover {
     flex-direction: column;
@@ -125,10 +126,14 @@ nav {
   }
   .cover-text {
     flex: 1;
+    text-align: center;
+  }
+  .cover-text p {
+    font-size: 30px;
   }
   .cover-img img {
   }
   .bottom-clipboard {
-    transform: scale(0.0);
+    transform: scale(0);
   }
 }
