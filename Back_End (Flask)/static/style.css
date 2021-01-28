@@ -57,6 +57,11 @@ nav {
   min-height: 30px;
   height: auto;
 }
+.active {
+  color: #687cfc;
+  background: rgba(255, 255, 255, 0.46);
+  border-radius: 26px;
+}
 .cover {
   display: flex;
   width: 90%;
