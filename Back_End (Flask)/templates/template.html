@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="static/style.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>RICA | {{page_title}}</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul class="nav-buttons">
+          <li>
+            <a href="/patients">
+              <button
+                class="nav-button {{'active' if page_title.lower() == 'patients' else ''}}"
+              >
+                Patients
+              </button>
+            </a>
+          </li>
+          <li>
+            <a href="/doctors">
+              <button
+                class="nav-button {{'active' if page_title.lower() == 'doctors' else ''}}"
+              >
+                Doctors
+              </button></a
+            >
+          </li>
+          <li>
+            <a href="/chemists">
+              <button
+                class="nav-button {{'active' if page_title.lower() == 'chemists' else ''}}"
+              >
+                Chemists
+              </button></a
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section class="cover">
+        <div class="cover-text">
+          <h1>{{page_title}}</h1>
+          <p>Team Rocket Balle Balle</p>
+        </div>
+        <div class="cover-img">
+          <iframe
+            src="{{gif_link}}"
+            style="border: none; height: auto; width: auto"
+          ></iframe>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
