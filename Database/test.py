@@ -4,7 +4,7 @@ conn = sqlite3.connect('rica.db')
 
 cur = conn.cursor()
 
-cur.execute("SELECT * FROM Patients")
-print(cur.fetchall())
+cur.execute("ALTER TABLE Doctors ADD COLUMN specialization Text")
+
 conn.commit()
 conn.close()
