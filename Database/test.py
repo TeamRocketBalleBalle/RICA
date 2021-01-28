@@ -4,11 +4,6 @@ conn = sqlite3.connect('rica.db')
 
 cur = conn.cursor()
 
-cur.execute(""" CREATE TABLE Patients(
-    name Text,
-    age Integer,
-    email Text
-
-) """)
+cur.execute("ALTER TABLE Patients ADD COLUMN (Loc , Text)")
 conn.commit()
 conn.close()
