@@ -4,7 +4,7 @@ try:
     from flask import Flask, render_template
 except ModuleNotFoundError as e:
     print(e)
-    print("Flask module not found. Is flask installed on your computer? \ntry running: \npython -m pip install flask")
+    print("Flask module not found. Is flask installed on your computer? \ntry running: \npython -m pip install -r requirements.txt")
     quit()
 
 app = Flask(__name__)
