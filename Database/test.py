@@ -8,3 +8,4 @@ cur.execute("ALTER TABLE Doctors ADD COLUMN specialization Text")
 
 conn.commit()
 conn.close()
+
