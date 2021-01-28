@@ -1,4 +1,4 @@
 # Table name : -
-# Patients ( Name , age , email , loc)
-# Doctors (Name , reg no, id ,pass,specialization)
-# Chemist (Name , location , rating)
+# Patients ( reg_no,name , email , phone_no , history , loc , DOB)
+# Doctors (name , email , phone_no , specialization , loc , prn(Secondary key))
+# Chemist (name , email ,phone_no, rating,loc,prn(Secondary Key))
