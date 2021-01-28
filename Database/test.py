@@ -4,12 +4,7 @@ conn = sqlite3.connect('rica.db')
 
 cur = conn.cursor()
 
-cur.execute("""CREATE TABLE CHEMIST (
-        name Text,
-        location Text,
-        rating INTEGER
-
-)
-""")
+cur.execute("SELECT * FROM Patients")
+print(cur.fetchall())
 conn.commit()
 conn.close()
