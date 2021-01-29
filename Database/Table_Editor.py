@@ -2,11 +2,7 @@ import sqlite3
 
 conn = sqlite3.connect('Rica_AlphaV0.1.db')
 cur = conn.cursor()
-patients_entry = [(1,'Ysh','ysh@123.com',1234567891,'nothing','Delhi','22/06/2003','Faltu','yash123','123456578')]
-cur.executemany("INSERT INTO Patients VALUES (?,?,?,?,?,?,?,?,?,?)",patients_entry)
-conn.commit()
-conn.close()
-chemvalues=[("Ram Gopal","ramgopal@123.com",9876543210,5,"Borawali East",1,"id.user",2021)]
-cur.executemany("INSERT CHEMIST VALUES (?,?,?,?,?,?,?,?)",chemvalues)
+patient_entry = [(2,'SHR08OPXD','Shr@epic.com',3454389841,'Hyper Tension','Omicron','08/04/2004','Faltu','Shr88','testcase1'),(3,'MofoAkshat','Aks@epic.com',6584271395,'Covid Survivor','Delta Noida','04/08/2001','Faltu','MofoAks','testcase2')]
+cur.executemany("INSERT INTO Patients VALUES(?,?,?,?,?,?,?,?,?,?)",patient_entry)
 conn.commit()
 conn.close()
