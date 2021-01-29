@@ -1,0 +1,133 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    
+  }
+  nav {
+    background: rgba(110, 240, 212, 0.68);
+    border-radius: 72px;
+    flex: 1;
+    height: auto;
+  }
+  .nav-buttons {
+    list-style: none;
+    display: flex;
+    justify-content: left;
+    padding: 0px 20px 0px 20px;
+    margin: 1%;
+    background-color: aquamarine;
+    
+  }
+  
+  .nav-button {
+    color: #000000;
+    font-size: 18px;
+    text-decoration: none;
+    transition: 1s ease;
+    min-width: 100px;
+    min-height: 30px;
+    
+  }
+  .nav-button:hover {
+    /* border: 4px solid #575771; */
+    background: rgba(128, 123, 123, 0.46);
+    border-radius: 26px;
+    transition: 200ms ease;
+    width: auto;
+    min-width: 100px;
+    min-height: 30px;
+    height: auto;
+  }
+  cover {
+    display: flex;
+    width: 90%;
+    margin: auto;
+    align-items: center;
+    min-height: 80vh;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: center;
+  }
+  .cover-text h2 {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 65px;
+    line-height: 100px;
+    letter-spacing: 0.11em;
+    z-index: 3;
+    color: #687cfc;
+    text-align: center;
+  }
+  .cover-text p {
+    font-size: 27px;
+    line-height: 44px;
+    padding-left: 8px;
+    color: #5b6cdb;
+  }
+  .cover-text {
+    flex: 2;
+    z-index: 3;
+  }
+  .cover-img {
+    flex: 3;
+   
+    z-index: 1;
+    width: auto;
+    transition: 1s ease;
+    text-align: right;
+    
+    position: absolute;
+    bottom: 8px;
+    right: 16px;
+  }
+  .cover-img img {
+    max-width: 100%;
+    height: auto;
+  }
+  .bottom-clipboard {
+    width: 256px;
+    height: 262px;
+    bottom: 1%;
+    position: absolute;
+    left: 2%;
+    z-index: 0;
+    
+  }
+  .bottom-clipboard img {
+    height: 100%;
+    width: 100%;
+    transform: rotate(-18.85deg);
+  }
+  
+ 
+  @media screen and (max-width: 1024px) {
+    body {
+      transition: 1s ease;
+      overflow: hidden;
+    }
+    .cover {
+      flex-direction: column;
+      padding-top: 2%;
+      justify-content: space-evenly;
+      align-content: center;
+    }
+    .cover-text {
+      flex: 1;
+      text-align: center;
+    }
+    .cover-text p {
+      font-size: 30px;
+    }
+    
+    .bottom-clipboard {
+      transform: scale(0);
+    }
+  }
+  .info{
+      text-align: center;
+      
+      
+    }
+  
+  
