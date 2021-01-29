@@ -14,7 +14,7 @@ def get_user_type(em):
     cur.execute(f"SELECT Ptype FROM Profiles WHERE email = \"{em}\"")
     return cur.fetchall()[0][0]
 
-def get_pass(em):
+def get_password(em):
     typ = get_user_type(em)
     cur.execute(f"SELECT pass from {typ}s WHERE email = \"{em}\"")
     return cur.fetchall()[0][0]
