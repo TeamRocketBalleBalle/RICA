@@ -36,7 +36,7 @@ def get_user_type(em):
 
 def get_password(em):
     p = get_user_type(em)
-    pt = query_db("SELECT Ptype from Profiles WHERE email = '?'", em)
+    #pt = query_db("SELECT Ptype from Profiles WHERE email = '?'", em)
 
     if p == 'Doctor':
         pass = query_db("SELECT pass from Doctors where email = '?'", em)
