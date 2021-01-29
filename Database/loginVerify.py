@@ -1,4 +1,4 @@
-from Database_connection import *
+from Database.Database_connection import *
 
 
 def login(email: str, password: str) -> bool:

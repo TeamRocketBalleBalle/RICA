@@ -1,5 +1,12 @@
 import html
-import sqlite3
+import sys, os
+from pathlib import Path
+path = Path(os.getcwd())
+print(f"path.parnet: {path.parent}")
+sys.path.append(path.parent)
+print(f"os.getcwd(): {os.getcwd()}")
+
+
 try:
     from flask import Flask, render_template, request, redirect
 except ModuleNotFoundError as e:
@@ -40,7 +47,8 @@ def login_page() -> 'html':
     """
     if request.form:
         # --------- Verifying user's entry------------
-        import loginVerify
+        os.chdir("../Database")
+        from Database import loginVerify
 
         email = request.form['email']
         password = request.form['password']
