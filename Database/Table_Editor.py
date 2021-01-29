@@ -2,11 +2,10 @@ import sqlite3
 
 conn = sqlite3.connect('Rica_AlphaV0.1.db')
 cur = conn.cursor()
-cur.execute("ALTER TABLE Patients ADD COLUMN id BLOB")
-cur.execute("ALTER TABLE Patients ADD COLUMN pass BLOB")
-cur.execute("ALTER TABLE Doctors ADD COLUMN id BLOB")
-cur.execute("ALTER TABLE Doctors ADD COLUMN pass BLOB")
-cur.execute("ALTER TABLE Chemists ADD COLUMN id BLOB")
-cur.execute("ALTER TABLE Chemists ADD COLUMN pass BLOB")
+
+conn.commit()
+conn.close()
+chemvalues=[("Ram Gopal","ramgopal@123.com",9876543210,5,"Borawali East",1,"id.user",2021)]
+cur.executemany("INSERT CHEMIST VALUES (?,?,?,?,?,?,?,?)",chemvalues)
 conn.commit()
 conn.close()
