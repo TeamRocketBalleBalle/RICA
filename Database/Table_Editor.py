@@ -2,11 +2,7 @@ import sqlite3
 
 conn = sqlite3.connect('Rica_AlphaV0.1.db')
 cur = conn.cursor()
-cur.execute("ALTER TABLE Patients ADD COLUMN id BLOB")
-cur.execute("ALTER TABLE Patients ADD COLUMN pass BLOB")
-cur.execute("ALTER TABLE Doctors ADD COLUMN id BLOB")
-cur.execute("ALTER TABLE Doctors ADD COLUMN pass BLOB")
-cur.execute("ALTER TABLE Chemists ADD COLUMN id BLOB")
-cur.execute("ALTER TABLE Chemists ADD COLUMN pass BLOB")
+patients_entry = [(1,'Ysh','ysh@123.com',1234567891,'nothing','Delhi','22/06/2003','Faltu','yash123','123456578')]
+cur.executemany("INSERT INTO Patients VALUES (?,?,?,?,?,?,?,?,?,?)",patients_entry)
 conn.commit()
 conn.close()
