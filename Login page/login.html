@@ -48,6 +48,12 @@
         </ul>
       </nav>
     </header>
+    {% if login_failed -%}
+    <div class="alert alert-danger" role="alert">
+  Invalid Password! 😕
+</div>
+    {% else -%}
+    {% endif %}
     <main class="form-signin">
       <form action="#" method="POST">
         <img
