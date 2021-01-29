@@ -1,3 +1,6 @@
+from Database_connection import *
+
+
 def login(email: str, password: str) -> bool:
     """
     This function takes the user's email, password as input and returns boolean value whether the password is correct
@@ -22,11 +25,5 @@ def login(email: str, password: str) -> bool:
     else:
         return False
 
-def get_user_class(email:str):
-    """
-    given a user's email, this function returns their type [patient, doctor, password]
 
-    :param email:
-    :return:
-    """
-
+print(check_existence('ysh@123.com'))
