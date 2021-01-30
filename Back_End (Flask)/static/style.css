@@ -30,6 +30,19 @@ nav {
   border-radius: 72px;
   flex: 1;
   height: auto;
+  display: flex;
+  align-items: center;
+}
+.home {
+  width: 35.6px;
+  height: 35px;
+  border-radius: 50%;
+  flex: 1;
+}
+.home:hover {
+  background: rgba(255, 255, 255, 0.46);
+  border-radius: 50%;
+  transition: 200ms ease;
 }
 .nav-buttons {
   list-style: none;
@@ -37,6 +50,7 @@ nav {
   justify-content: space-evenly;
   padding: 0px 20px 0px 20px;
   margin: 1%;
+  flex: 5;
 }
 
 .nav-button {
@@ -56,6 +70,14 @@ nav {
   min-width: 100px;
   min-height: 30px;
   height: auto;
+}
+.login {
+  flex: 1;
+}
+.active {
+  color: #687cfc;
+  background: rgba(255, 255, 255, 0.46);
+  border-radius: 26px;
 }
 .active {
   color: #687cfc;
