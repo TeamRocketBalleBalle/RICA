@@ -1,6 +1,8 @@
 import html
-import sys, os
+import os
+import sys
 from pathlib import Path
+
 path = Path(os.getcwd())
 print(f"path.parnet: {path.parent}")
 sys.path.append(path.parent)
@@ -11,7 +13,8 @@ try:
     from flask import Flask, render_template, request, redirect
 except ModuleNotFoundError as e:
     print(e)
-    print("Flask module not found. Is flask installed on your computer? \ntry running: \npython -m pip install -r requirements.txt")
+    print("Flask module not found. Is flask installed on your computer? \ntry running: \npython -m pip install -r "
+          "requirements.txt")
     quit()
 
 app = Flask(__name__)
@@ -26,17 +29,20 @@ def landing_page() -> 'html':
 
 @app.route('/patients')
 def patients_page() -> 'html':
-    return render_template("template.html", page_title="Patients", gif_link="https://cdn.discordapp.com/emojis/768874484429226004.gif?v=1")
+    return render_template("template.html", page_title="Patients",
+                           gif_link="https://cdn.discordapp.com/emojis/768874484429226004.gif?v=1")
 
 
 @app.route('/doctors')
 def doctors_page() -> 'html':
-    return render_template("template.html", page_title="Doctors", gif_link="https://cdn.discordapp.com/emojis/791837082237665300.gif?v=1")
+    return render_template("template.html", page_title="Doctors",
+                           gif_link="https://cdn.discordapp.com/emojis/791837082237665300.gif?v=1")
 
 
 @app.route('/chemists')
 def chemists_page() -> 'html':
-    return render_template("template.html", page_title="Chemists", gif_link="https://cdn.discordapp.com/emojis/754250296980668516.gif?v=11")
+    return render_template("template.html", page_title="Chemists",
+                           gif_link="https://cdn.discordapp.com/emojis/754250296980668516.gif?v=11")
 
 
 @app.route('/login', methods=["GET", "POST"])
