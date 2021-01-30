@@ -16,7 +16,9 @@ button {
   background: transparent;
   border: none;
 }
-
+svg {
+  vertical-align: inherit !important;
+}
 header {
   display: flex;
   margin: auto;
@@ -24,6 +26,7 @@ header {
   width: 70%;
   min-height: 10vh;
   align-items: center;
+  max-width: 769px;
 }
 nav {
   background: rgba(110, 240, 212, 0.68);

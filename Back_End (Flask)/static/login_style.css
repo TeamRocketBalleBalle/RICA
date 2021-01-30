@@ -99,3 +99,7 @@ nav {
   background: #6ae6a8;
   transition: 0.5s ease;
 }
+
+svg {
+  vertical-align: unset !important;
+}
