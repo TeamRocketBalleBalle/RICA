@@ -49,12 +49,13 @@ def login_page() -> 'html':
         # --------- Verifying user's entry------------
         os.chdir("../Database")
         from Database import loginVerify
+        from Database.Database_connection import get_user_type
 
         email = request.form['email']
         password = request.form['password']
 
         if loginVerify.login(email, password):
-            return redirect(f"/{loginVerify.get_user_class(email)}")
+            return redirect(f"/{loginVerify.get_user_type(email).lower()}s")
         else:
             return render_template("login.html", page_title="Login", login_failed=True)
 
