@@ -1,7 +1,10 @@
 {% extends 'base_navbar.html' %}
 <!-- variables used: - login_failed -> bool : if
 true, then an alert pops up that login has failed  -->
-{% block main %}
+
+{% block CSS_File %}
+<link rel="stylesheet" href="static/login_style.css" />
+{% endblock %} {% block main %}
 <main class="form-signin">
   {% if login_failed -%}
   <div class="alert alert-danger" role="alert">Invalid Password! 😕</div>

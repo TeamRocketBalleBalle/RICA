@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <!-- VARIABLES USED JINJA
   - useBootstrap -> bool : if yes, then bootstrap is loaded
-  - extraCSS -> list : if list exists, then the extra css files are loaded via for loop
   - page_title -> str : sets the title of the page
 -->
 
@@ -29,9 +28,7 @@
 
     <link rel="stylesheet" href="static/style.css" />
 
-    {% if extraCSS %} {% for css_file in extraCSS %}
-    <link rel="stylesheet" href="{{ css_file }}" />
-    {% endfor %} {% else %} {% endif %}
+    {% block CSS_File %} {% endblock %}
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com" />
