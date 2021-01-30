@@ -1,0 +1,57 @@
+{% extends 'base_navbar.html' %}
+<!-- variables used: - login_failed -> bool : if
+true, then an alert pops up that login has failed  -->
+{% block main %}
+<main class="form-signin">
+  {% if login_failed -%}
+  <div class="alert alert-danger" role="alert">Invalid Password! 😕</div>
+  {% else -%} {% endif %}
+  <div class="text-center">
+    <form action="/login" method="POST">
+      <img
+        src="static/assets/favicon.png"
+        alt="logo"
+        class="mb-4"
+        width="72"
+        height="72"
+      />
+      <h1>Sign In</h1>
+      <input
+        name="email"
+        type="email"
+        id="inputEmail"
+        class="form-control"
+        placeholder="Email address"
+        required=""
+        autofocus=""
+        style="
+          background-repeat: no-repeat;
+          background-attachment: scroll;
+          background-size: 16px 18px;
+          background-position: 98% 50%;
+          cursor: auto;
+        "
+      />
+      <input
+        name="password"
+        type="password"
+        id="inputPassword"
+        class="form-control"
+        placeholder="Password"
+        required=""
+        style="
+          background-repeat: no-repeat;
+          background-attachment: scroll;
+          background-size: 16px 18px;
+          background-position: 98% 50%;
+          cursor: auto;
+        "
+      />
+      <button class="w-100 btn btn-lg green-button" type="submit">
+        Sign in
+      </button>
+    </form>
+  </div>
+
+  {% endblock %}
+</main>

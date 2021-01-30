@@ -69,4 +69,9 @@ def login_page() -> 'html':
         return render_template("login.html", page_title="Login", login_failed=False)
 
 
+@app.route("/jinja")
+def jinja_test() -> "html":
+    return render_template("login_with_jinja.html", page_title="Testing Jinja", extraCSS=["static/login_style.css"], useBootstrap=True)
+
+
 app.run(debug=True)
