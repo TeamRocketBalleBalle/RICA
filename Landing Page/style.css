@@ -31,6 +31,16 @@ nav {
   flex: 1;
   height: auto;
 }
+.home {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+.home:hover {
+  background: rgba(255, 255, 255, 0.46);
+  border-radius: 50%;
+  transition: 200ms ease;
+}
 .nav-buttons {
   list-style: none;
   display: flex;
