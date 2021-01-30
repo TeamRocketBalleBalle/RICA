@@ -43,7 +43,7 @@ def get_user_type(em, cur):
 def get_password(em, cur):
     typ = get_user_type(em)
     cur.execute(f"SELECT pass from {typ}s WHERE email = \"{em}\"")
-    return cur.fetchall()[0][0]
+    return str(cur.fetchall()[0][0])
 
 
 if __name__ == "__main__":
