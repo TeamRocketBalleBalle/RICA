@@ -1,14 +1,16 @@
 {% extends 'base_navbar.html' %}
-<!-- variables used: - login_failed -> bool : if
-true, then an alert pops up that login has failed  -->
+<!-- variables used: 
+    - login_failed -> bool : if true, then an alert pops up that login has failed
+  -->
 
 {% block CSS_File %}
 <link rel="stylesheet" href="static/login_style.css" />
-{% endblock %} {% block main %}
-<main class="form-signin">
-  {% if login_failed -%}
-  <div class="alert alert-danger" role="alert">Invalid Password! 😕</div>
-  {% else -%} {% endif %}
+<link rel="stylesheet" href="static/new_login.css" />
+{% endblock %} {% block main %} {% if login_failed -%}
+<div class="alert alert-danger" role="alert">Invalid Password! 😕</div>
+{% else -%} {% endif %}
+
+<main class="form-signin" style="margin-top: 10%">
   <div class="text-center">
     <form action="/login" method="POST">
       <img
@@ -18,7 +20,7 @@ true, then an alert pops up that login has failed  -->
         width="72"
         height="72"
       />
-      <h1>Sign In</h1>
+      <h1>Login</h1>
       <input
         name="email"
         type="email"
@@ -55,6 +57,17 @@ true, then an alert pops up that login has failed  -->
       </button>
     </form>
   </div>
-
-  {% endblock %}
 </main>
+<div
+  class="cover-img"
+  style="
+    position: absolute;
+    filter: blur(5px);
+    bottom: 0.5%;
+    z-index: -1;
+    width: 50%;
+  "
+>
+  <img src="static/assets/LabCoatHumanCentered.svg" alt="Artistic Doctor" />
+</div>
+{% endblock %}

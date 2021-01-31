@@ -63,10 +63,10 @@ def login_page() -> 'html':
         if loginVerify.login(email, password):
             return redirect(f"/{loginVerify.get_user_type(email).lower()}s")
         else:
-            return render_template("login.html", page_title="Login", login_failed=True)
+            return render_template("login_with_jinja.html", page_title="Login", login_failed=True, useBootstrap=True)
 
     else:
-        return render_template("login.html", page_title="Login", login_failed=False)
+        return render_template("login_with_jinja.html", page_title="Login", login_failed=False, useBootstrap=True)
 
 
 @app.route("/jinja")
