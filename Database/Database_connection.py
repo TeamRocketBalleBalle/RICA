@@ -27,7 +27,7 @@ def connect_and_close(func):
 @connect_and_close
 def check_existence(em, cur):
     # os.chdir("../Database")
-    print(f"databse_connection ke andar: {os.getcwd()}")
+    # print(f"databse_connection ke andar: {os.getcwd()}")
     # breakpoint()
     cur.execute(f'SELECT * FROM Profiles WHERE email = \"{em}\"')
     return bool(cur.fetchall())
