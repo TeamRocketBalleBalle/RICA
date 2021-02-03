@@ -92,7 +92,11 @@
       <section class="cover">
         <div class="cover-text">
           <h1>{{page_title}}</h1>
-          <p>Team Rocket Balle Balle</p>
+          <p>
+            Team Rocket Balle Balle
+            <br>
+            {% if alternateText %} {{alternateText}} {% else %} {{page_title}} {{dictionary}} {% endif %}
+          </p>
         </div>
         <div class="cover-img">
           <iframe
