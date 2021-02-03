@@ -8,8 +8,10 @@ def connect_and_close(func):
     :param func: function
     :return: function output
     """
-
     def wrap(*args, **kwargs):
+        # print("Before:", os.getcwd())
+        os.chdir("../Database")
+        # print("After:", os.getcwd())
         # connect to the database
         conn = sqlite3.connect('Rica_AlphaV0.1.db')
         cur = conn.cursor()
@@ -19,6 +21,7 @@ def connect_and_close(func):
 
         # close the connection to database
         conn.close()
+        os.chdir("../Back_End (Flask)")
         return result
 
     return wrap
@@ -34,7 +37,13 @@ def check_existence(em, cur):
 
 
 @connect_and_close
-def get_user_type(em, cur):
+def get_user_type(em: str, cur):
+    """
+    Get's the user type from database using email as key
+    :param em: emaail
+    :param cur: Sqlite cursor object
+    :return: str, any one from  "Patient", "Doctor", "Chemist"
+    """
     cur.execute(f"SELECT Ptype FROM Profiles WHERE email = \"{em}\"")
     return cur.fetchall()[0][0]
 
@@ -48,3 +57,4 @@ def get_password(em, cur):
 
 if __name__ == "__main__":
     print(check_existence("ysh@123.com"))
+    print(get_user_type("ysh@123.com"))
