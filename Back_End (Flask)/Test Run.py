@@ -13,8 +13,33 @@ from colorama import Fore, init
 
 # Initialising colorama
 init(autoreset=True)
-# ====================================================================================================================
+
+# ========================================================================================================
+# Creating a filter for Logginf IP
+# src: https://stackoverflow.com/questions/17558552/how-do-i-add-custom-field-to-python-log-format-string
+
+
+class IPFilter(logging.Filter):
+    def filter(self, record):
+        record.ip_address = Fore.LIGHTWHITE_EX + request.remote_addr if request else ""
+        return True
+
+
+# =======================================================================================================
+# =======================================================================================================
+"""
+ .oooooo..o               .       .    o8o                              oooooooooooo oooo                     oooo        
+d8P'    `Y8             .o8     .o8    `"'                              `888'     `8 `888                     `888        
+Y88bo.       .ooooo.  .o888oo .o888oo oooo  ooo. .oo.    .oooooooo       888          888   .oooo.    .oooo.o  888  oooo  
+ `"Y8888o.  d88' `88b   888     888   `888  `888P"Y88b  888' `88b        888oooo8     888  `P  )88b  d88(  "8  888 .8P'   
+     `"Y88b 888ooo888   888     888    888   888   888  888   888        888    "     888   .oP"888  `"Y88b.   888888.    
+oo     .d8P 888    .o   888 .   888 .  888   888   888  `88bod8P'        888          888  d8(  888  o.  )88b  888 `88b.  
+8""88888P'  `Y8bod8P'   "888"   "888" o888o o888o o888o `8oooooo.       o888o        o888o `Y888""8o 8""888P' o888o o888o 
+                                                        d"     YD                                                         
+                                                        "Y88888P'                                                         
+"""
 # ----- Setting up Flask ----------------------------
+
 
 try:
     from flask import Flask, render_template, request, redirect, session
@@ -33,13 +58,25 @@ app.config["SECRET_KEY"] = 'dev'
 # breakpoint()
 # Configure logging for app.logger
 app.logger.handlers[0].setFormatter(
-    logging.Formatter("%(ip_address)s %(levelname)s - - [%(asctime)s] \"%(message)s\" ", datefmt="%d/%b/%y %H:%M:%S"))
+    logging.Formatter("%(ip_address)s - - [%(asctime)s] %(levelname)s: \"%(message)s\"", datefmt="%d/%b/%Y %H:%M:%S"))
 app.logger.setLevel(10)
+app.logger.addFilter(IPFilter())
 
 # -------------------------------------------------
 # =====================================================================================================================
+"""
+ooo        ooooo            o8o                     .oooooo.                   .o8            
+`88.       .888'            `"'                    d8P'  `Y8b                 "888            
+ 888b     d'888   .oooo.   oooo  ooo. .oo.        888           .ooooo.   .oooo888   .ooooo.  
+ 8 Y88. .P  888  `P  )88b  `888  `888P"Y88b       888          d88' `88b d88' `888  d88' `88b 
+ 8  `888'   888   .oP"888   888   888   888       888          888   888 888   888  888ooo888 
+ 8    Y     888  d8(  888   888   888   888       `88b    ooo  888   888 888   888  888    .o 
+o8o        o888o `Y888""8o o888o o888o o888o       `Y8bood8P'  `Y8bod8P' `Y8bod88P" `Y8bod8P'                                                                                     
+"""
 
 # ------------- Giving routes --------------------
+
+
 @app.route('/')
 def landing_page() -> 'html':
     session['ip'] = request.remote_addr
