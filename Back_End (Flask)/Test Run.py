@@ -2,6 +2,7 @@ import html
 import os
 import logging
 from colorama import Fore, init
+from Database.loginVerify import get_user_type
 
 # import sys
 # from pathlib import Path
@@ -13,6 +14,7 @@ from colorama import Fore, init
 
 # Initialising colorama
 init(autoreset=True)
+
 
 # ========================================================================================================
 # Creating a filter for Logginf IP
@@ -34,7 +36,7 @@ Y88bo.       .ooooo.  .o888oo .o888oo oooo  ooo. .oo.    .oooooooo       888    
  `"Y8888o.  d88' `88b   888     888   `888  `888P"Y88b  888' `88b        888oooo8     888  `P  )88b  d88(  "8  888 .8P'   
      `"Y88b 888ooo888   888     888    888   888   888  888   888        888    "     888   .oP"888  `"Y88b.   888888.    
 oo     .d8P 888    .o   888 .   888 .  888   888   888  `88bod8P'        888          888  d8(  888  o.  )88b  888 `88b.  
-8""88888P'  `Y8bod8P'   "888"   "888" o888o o888o o888o `8oooooo.       o888o        o888o `Y888""8o 8""888P' o888o o888o 
+8""88888P'  `Y8bod8P'   "888"   "888" o888o o888o o888o `8oooooo.       o888o        o888o `Y888""8o 8""888P' o888o o888 
                                                         d"     YD                                                         
                                                         "Y88888P'                                                         
 """
@@ -74,6 +76,7 @@ ooo        ooooo            o8o                     .oooooo.                   .
 o8o        o888o `Y888""8o o888o o888o o888o       `Y8bood8P'  `Y8bod8P' `Y8bod88P" `Y8bod8P'                                                                                     
 """
 
+
 # ------------- Giving routes --------------------
 
 
@@ -85,20 +88,80 @@ def landing_page() -> 'html':
 
 @app.route('/patients')
 def patients_page() -> 'html':
-    return render_template("template.html", page_title=f"Patients {dict(session)}",
-                           gif_link="https://cdn.discordapp.com/emojis/768874484429226004.gif?v=1")
+    PAGE_TITLE = "Patient"
+    # If user is not logged in
+    app.logger.debug(f"Before calling function: {os.getcwd()}")
+    if "username" not in session:
+        alternate_text = "You need to login to view this page"
+    # if above is false, then user is logged in
+    # So check if their account type is different than this page's requirement
+    elif get_user_type(session['username']) != PAGE_TITLE:
+        alternate_text = "You are not authorised to view this page"
+    # if we reach here, then the user is a patient indeed
+    else:
+        alternate_text = None
+
+    app.logger.info(
+        Fore.YELLOW +
+        f"{'{} [{}]'.format(session['username'], session['type']) if 'username' in session else 'Anonymous'}: "
+        f"tried to access {PAGE_TITLE}s page "
+    )
+
+    return render_template("template.html", page_title=f"{PAGE_TITLE}s", dictionary=f"{dict(session)}",
+                           gif_link="https://cdn.discordapp.com/emojis/768874484429226004.gif?v=1",
+                           alternateText=alternate_text)
 
 
 @app.route('/doctors')
 def doctors_page() -> 'html':
-    return render_template("template.html", page_title="Doctors",
-                           gif_link="https://cdn.discordapp.com/emojis/791837082237665300.gif?v=1")
+    PAGE_TITLE = "Doctor"
+    # If user is not logged in
+    app.logger.debug(f"Before calling function: {os.getcwd()}")
+    if "username" not in session:
+        alternate_text = "You need to login to view this page"
+    # if above is false, then user is logged in
+    # So check if their account type is different than this page's requirement
+    elif get_user_type(session['username']) != PAGE_TITLE:
+        alternate_text = "You are not authorised to view this page"
+    # if we reach here, then the user is a patient indeed
+    else:
+        alternate_text = None
+
+    app.logger.info(
+        Fore.YELLOW +
+        f"{'{} [{}]'.format(session['username'], session['type']) if 'username' in session else 'Anonymous'}: "
+        f"tried to access {PAGE_TITLE}s page "
+    )
+
+    return render_template("template.html", page_title=f"{PAGE_TITLE}s", dictionary=f"{dict(session)}",
+                           gif_link="https://cdn.discordapp.com/emojis/791837082237665300.gif?v=1",
+                           alternateText=alternate_text)
 
 
 @app.route('/chemists')
 def chemists_page() -> 'html':
-    return render_template("template.html", page_title=f"Chemists {dict(session)}",
-                           gif_link="https://cdn.discordapp.com/emojis/754250296980668516.gif?v=11")
+    PAGE_TITLE = "Chemist"
+    # If user is not logged in
+    app.logger.debug(f"Before calling function: {os.getcwd()}")
+    if "username" not in session:
+        alternate_text = "You need to login to view this page"
+    # if above is false, then user is logged in
+    # So check if their account type is different than this page's requirement
+    elif get_user_type(session['username']) != PAGE_TITLE:
+        alternate_text = "You are not authorised to view this page"
+    # if we reach here, then the user is a patient indeed
+    else:
+        alternate_text = None
+
+    app.logger.info(
+        Fore.YELLOW +
+        f"{'{} [{}]'.format(session['username'], session['type']) if 'username' in session else 'Anonymous'}: "
+        f"tried to access {PAGE_TITLE}s page "
+    )
+
+    return render_template("template.html", page_title=f"{PAGE_TITLE}s", dictionary=f"{dict(session)}",
+                           gif_link="https://cdn.discordapp.com/emojis/754250296980668516.gif?v=11",
+                           alternateText=alternate_text)
 
 
 @app.route('/login', methods=["GET", "POST"])
@@ -122,13 +185,14 @@ def login_page() -> 'html':
         app.logger.info(Fore.CYAN + f"{email}: connected")
 
         # --------- Verifying user's entry------------
-        os.chdir("../Database")
+        # os.chdir("../Database")
         from Database import loginVerify
         from Database.Database_connection import get_user_type
 
         # If logged in successfully
         if loginVerify.login(email, password):
             session['username'] = email
+            session['type'] = get_user_type(email)
             app.logger.info(Fore.GREEN + f"{email}: Logged in SUCCESFULLY")
             return redirect(f"/{loginVerify.get_user_type(email).lower()}s")
         # Login FAILED
