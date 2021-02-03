@@ -25,5 +25,5 @@ def login(email: str, password: str) -> bool:
     else:
         return False
 
-
-print(check_existence('ysh@123.com'))
+if __name__ == '__main__':
+    print(check_existence('ysh@123.com'))
