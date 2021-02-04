@@ -21,7 +21,7 @@ def connect_and_close(func):
 
         # close the connection to database
         conn.close()
-        os.chdir("../Back_End (Flask)")
+        os.chdir("../Back_End")
         return result
 
     return wrap
