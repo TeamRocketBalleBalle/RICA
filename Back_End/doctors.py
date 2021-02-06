@@ -1,7 +1,7 @@
 from Back_End.common_modules import *
 
 # Initialising the Blueprint
-bp = Blueprint("doctors", __name__, url_prefix="/doctors")
+bp = Blueprint("doctors", __name__, url_prefix="/doctors", static_folder='static')
 
 @bp.route("")
 def doctors_page() -> 'html':

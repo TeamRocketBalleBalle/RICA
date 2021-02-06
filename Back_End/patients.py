@@ -1,7 +1,7 @@
 from Back_End.common_modules import *
 
 # initialising the blueprint
-bp = Blueprint("patients", __name__, url_prefix="/patients")
+bp = Blueprint("patients", __name__, url_prefix="/patients", static_folder='static')
 
 
 @bp.route("")
@@ -28,3 +28,12 @@ def patients_page() -> 'html':
     return render_template("template.html", page_title=f"{PAGE_TITLE}s", dictionary=f"{dict(session)}",
                            gif_link="https://cdn.discordapp.com/emojis/768874484429226004.gif?v=1",
                            alternateText=alternate_text)
+
+
+@bp.route("/retrieve")
+def retrieve_docs() -> html:
+    from Database.Database_connection import get_all_docs
+    return render_template("retrieve_docOcs.html", page_title="Testing", dictionary=f"{dict(session)}",
+                           gif_link="https://cdn.discordapp.com/emojis/768874484429226004.gif?v=1",
+                           doc_ocs = get_all_docs()
+                           )

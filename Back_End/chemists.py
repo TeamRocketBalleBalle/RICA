@@ -1,7 +1,7 @@
 from Back_End.common_modules import *
 
 # Initialise the bluepring
-bp = Blueprint("chemists", __name__, url_prefix="/chemists")
+bp = Blueprint("chemists", __name__, url_prefix="/chemists", static_folder='static')
 
 
 @bp.route("")
