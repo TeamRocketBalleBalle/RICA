@@ -8,6 +8,7 @@ def connect_and_close(func):
     :param func: function
     :return: function output
     """
+
     def wrap(*args, **kwargs):
         # print("Before:", os.getcwd())
         os.chdir("../Database")
@@ -53,6 +54,11 @@ def get_password(em, cur):
     typ = get_user_type(em)
     cur.execute(f"SELECT pass from {typ}s WHERE email = \"{em}\"")
     return str(cur.fetchall()[0][0])
+
+
+@connect_and_close
+def get_all_docs(cur):
+    return cur.execute("""SELECT name, specialization, loc, pass FROM Doctors""").fetchall()
 
 
 if __name__ == "__main__":
