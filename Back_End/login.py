@@ -1,4 +1,4 @@
-from common_modules import *
+from Back_End.common_modules import *
 from flask import request, current_app, redirect
 
 # Initialising the BluePrint

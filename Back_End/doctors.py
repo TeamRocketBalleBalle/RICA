@@ -1,4 +1,4 @@
-from common_modules import *
+from Back_End.common_modules import *
 
 # Initialising the Blueprint
 bp = Blueprint("doctors", __name__, url_prefix="/doctors")
