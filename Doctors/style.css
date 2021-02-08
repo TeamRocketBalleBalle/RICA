@@ -116,3 +116,10 @@
     min-height: 10vh;
     align-items: center;
   }
+  .submit{
+    position: relative;
+    left: 1150px;
+    bottom: -100px;
+
+  }
+  
