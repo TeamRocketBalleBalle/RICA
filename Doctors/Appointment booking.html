@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html>
 <h1>Book Your Appointment</h1>
+<h2>Kindly enter your symptoms (You may seperatre your symptoms by a comma)</h2>
+<input type="text">
 <div class="doc1">
 <h2> Dr. Yash </h2>
 
 
 
-    <p> </p>>
+    >
 
 <button onclick="appoint()">Book Your Appointment!</button>
 
@@ -24,14 +26,34 @@ function appoint() {
 
 <div class="doc2">
 <h2> Dr. Jayant</h2>
-    <button type="button" onclick="appoint()">Book Your Appointment!</button>
+>
+    <button onclick="appoint1()">Book Your Appointment!</button>
+
+<p id="demo1"></p>
+
+<script>
+function appoint1() {
+
+  document.getElementById("demo1").innerHTML = "<input type=\"datetime-local\" id=\"time\" value=\"time\" >";
+}
+</script>
 
 
 </div>
 
 <div class="doc3">
 <h2> Dr. Ayush</h2>
-    <button type="button" onclick="appoint()">Book Your Appointment!</button>
+>
+    <button onclick="appoint2()">Book Your Appointment!</button>
+
+<p id="demo2"></p>
+
+<script>
+function appoint2() {
+
+  document.getElementById("demo2").innerHTML = "<input type=\"datetime-local\" id=\"time\" value=\"time\" >";
+}
+</script>
 </div>
 
 
