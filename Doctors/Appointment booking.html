@@ -1,18 +1,65 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <header>
+            <nav>
+              <ul class="nav-buttons">
+                <li><button href="#" class="nav-button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#687CFC"><path d="M12 1l-12 12h3v10h18v-10h3l-12-12zm0 18c-1.607-1.626-3-2.84-3-4.027 0-1.721 2.427-2.166 3-.473.574-1.695 3-1.246 3 .473 0 1.187-1.393 2.402-3 4.027zm8-11.907l-3-3v-2.093h3v5.093z"/></svg></button>
+                <li class="pat">
+                  <a href="/patients">
+                    <button
+                      class="nav-button {{'active' if page_title.lower() == 'patients' else ''}}"
+                    >
+                      Patients
+                    </button>
+                  </a>
+                </li>
+                <li>
+                  <a href="/doctors">
+                    <button
+                      class="nav-button {{'active' if page_title.lower() == 'doctors' else ''}}"
+                    >
+                      Doctors
+                    </button></a
+                  >
+                </li>
+                <li>
+                  <a href="/chemists">
+                    <button
+                      class="nav-button {{'active' if page_title.lower() == 'chemists' else ''}}"
+                    >
+                      Chemists
+                    </button></a
+                  >
+                </li>
+              </ul>
+            </nav>
+          </header>
+          <div class="cover-img">
+            <img src="Humaaans test 2.png" alt="Artistic Doctor" text-align: centre; />
+          </div>
+<div class="t">
 <h1>Book Your Appointment</h1>
+<br><br>
 <h2>Kindly enter your symptoms (You may seperatre your symptoms by a comma)</h2>
-<input type="text">
+<br><br>
+<input class="box"type="text">
 <div class="doc1">
 <h2> Dr. Yash </h2>
+<br>
+>
 
 
 
-    >
+    
 
-<button onclick="appoint()">Book Your Appointment!</button>
+<button class="but" onclick="appoint()">Book Your Appointment!</button>
 
 <p id="demo"></p>
+<br><br>
 
 <script>
 function appoint() {
@@ -26,10 +73,12 @@ function appoint() {
 
 <div class="doc2">
 <h2> Dr. Jayant</h2>
+<br>
 >
-    <button onclick="appoint1()">Book Your Appointment!</button>
+    <button class="but" onclick="appoint1()">Book Your Appointment!</button>
 
 <p id="demo1"></p>
+<br><br>
 
 <script>
 function appoint1() {
@@ -43,8 +92,10 @@ function appoint1() {
 
 <div class="doc3">
 <h2> Dr. Ayush</h2>
+<br>
 >
-    <button onclick="appoint2()">Book Your Appointment!</button>
+
+    <button class="but" onclick="appoint2()">Book Your Appointment!</button>
 
 <p id="demo2"></p>
 
@@ -55,6 +106,8 @@ function appoint2() {
 }
 </script>
 </div>
+</div>
+</body>
 
 
 </html>
