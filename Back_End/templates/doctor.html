@@ -50,14 +50,14 @@
     </nav>
   </header>
   <div class="cover-img">
-    <img src="Humaaans test 2.png" alt="Artistic Doctor" text-align: centre; />
+    <img src="static/assets/Humaaans test 2.png" alt="Artistic Doctor" text-align: centre; />
   </div>
 <div class="forms">
 <h1 class="yo">Select Doctor's Specialisation</h1>
 <br>
-<form action="/action_page.php">
-  <label for="cars">Which Doctor you want to see:</label>
-  <select name="cars" id="cars">
+<form action="/patients/appointment" method="POST">
+  <label for="docs">Which Doctor you want to see:</label>
+  <select name="docs" id="docs">
     <option value="Cardiologist">Cardiologist</option>
     <option value="Audiologist"> Audiologist</option>
     <option value="Dentist">Dentist</option>
@@ -74,7 +74,9 @@
 </form>
 
 <br>
-<h2 class="thanks"><p><b>"Thankyou for chosing your Doctor"</b> </p></h2>
+<h2 class="thanks"><p><b>"Thank you for choosing your Doctor"</b> </p></h2>
 </div>
 </body>
 </html>
+
+
