@@ -3,17 +3,35 @@
 <h1>Book Your Appointment</h1>
 <div class="doc1">
 <h2> Dr. Yash </h2>
-<button type="button" onclick="alert('Your Appointment has been Booked , Thankyou!')">Book Your Appointment!</button>
+
+
+
+    <p> </p>>
+
+<button onclick="appoint()">Book Your Appointment!</button>
+
+<p id="demo"></p>
+
+<script>
+function appoint() {
+
+  document.getElementById("demo").innerHTML = "<input type=\"datetime-local\" id=\"time\" value=\"time\" >";
+}
+</script>
+
+
 </div>
 
 <div class="doc2">
 <h2> Dr. Jayant</h2>
-    <button type="button" onclick="alert('Your Appointment has been Booked , Thankyou!')">Book Your Appointment!</button>
+    <button type="button" onclick="appoint()">Book Your Appointment!</button>
+
+
 </div>
 
 <div class="doc3">
 <h2> Dr. Ayush</h2>
-    <button type="button" onclick="alert('Your Appointment has been Booked , Thankyou!')">Book Your Appointment!</button>
+    <button type="button" onclick="appoint()">Book Your Appointment!</button>
 </div>
 
 
