@@ -1,0 +1,37 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    height: auto;
+    width: auto;
+}
+.But{
+    position: relative;
+    left:70% ;
+    bottom: -210px;
+    
+    
+}
+.greet{
+    text-align: center;
+   
+.cover-img {
+    flex: 3;
+    /* height: auto;
+    width: auto; */
+    z-index: 1;
+    width: auto;
+    transition: 1s ease;
+    position: absolute;
+    bottom: 2%;
+    
+  }
+  body {
+    font-family: "Oxygen", sans-serif;
+    background: linear-gradient(180deg, #ffffff 64.12%, #6ef0d4 164.45%) no-repeat;
+    min-height: 100vh;
+  }
+  .patientIRA{
+      border-style: outset;
+  }
+  
