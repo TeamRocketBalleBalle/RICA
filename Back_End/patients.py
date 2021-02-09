@@ -1,5 +1,6 @@
+from flask import request
+
 from Back_End.common_modules import *
-from flask import request , redirect
 
 # initialising the blueprint
 bp = Blueprint("patients", __name__, url_prefix="/patients", static_folder='static')
@@ -33,7 +34,6 @@ def patients_page() -> 'html':
 
 @bp.route("/retrieve")
 def retrieve_docs(doc_ocs=None) -> html:
-    from Database.Database_connection import get_all_docs
     return render_template("retrieve_docOcs.html", page_title="Testing", dictionary=f"{dict(session)}",
                            gif_link="https://cdn.discordapp.com/emojis/768874484429226004.gif?v=1",
                            doc_ocs=doc_ocs
@@ -44,12 +44,12 @@ def retrieve_docs(doc_ocs=None) -> html:
 def appointments() -> html:
     if request.form:
         doc = get_doc_names(request.form["docs"])
-        current_app.logger.debug(Fore.WHITE+f"CATEGORY RECEIVED:- {request.form['docs']}")
-        current_app.logger.debug(Fore.WHITE+f"DB respond sent:- {doc}")
+        current_app.logger.debug(Fore.WHITE + f"CATEGORY RECEIVED:- {request.form['docs']}")
+        current_app.logger.debug(Fore.WHITE + f"DB respond sent:- {doc}")
         return render_template("appointment_booking.html", page_title="Testing", dictionary=f"{dict(session)}",
                                gif_link="https://cdn.discordapp.com/emojis/768874484429226004.gif?v=1",
-                               docs=doc
+                               docs=doc,
                                )
     else:
         docs = []
-    return render_template("doctor.html", page_title="SHR08OPXD page", doc_ocs=docs)
+    return render_template("doctor.html", page_title="SHR08OPXD page", doc_ocs=docs, useBootstrap=True)
