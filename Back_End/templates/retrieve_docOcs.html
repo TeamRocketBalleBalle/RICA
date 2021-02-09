@@ -1,0 +1,20 @@
+{% extends "template.html" %} {% block test %}
+<h1>Testing retrieval of doc ocs</h1>
+<section>
+  {% if doc_ocs %}
+  <ol>
+    {% for name, spec, loc, password in doc_ocs %}
+    <li>
+      Name: {{name}}
+      <br>
+      Specialisation: {{spec}}
+      <br>
+      <b>PASSWORD: </b> {{password}}
+    </li>
+  </ol>
+  {% endfor %}
+  {% else %}
+    No data provided :/
+  {% endif %}
+</section>
+{% endblock %}
