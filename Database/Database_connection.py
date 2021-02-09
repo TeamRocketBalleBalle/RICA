@@ -61,6 +61,12 @@ def get_all_docs(cur):
     return cur.execute("""SELECT name, specialization, loc, pass FROM Doctors""").fetchall()
 
 
+@connect_and_close
+def get_doc_names(spec: str, cur):
+    return cur.execute(f"SELECT name from Doctors where specialization == '{spec}'").fetchall()
+
+
 if __name__ == "__main__":
     print(check_existence("ysh@123.com"))
     print(get_user_type("ysh@123.com"))
+    print((get_doc_names("Cardiologist")))

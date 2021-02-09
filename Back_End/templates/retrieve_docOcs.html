@@ -3,13 +3,9 @@
 <section>
   {% if doc_ocs %}
   <ol>
-    {% for name, spec, loc, password in doc_ocs %}
+    {% for name in doc_ocs %}
     <li>
       Name: {{name}}
-      <br>
-      Specialisation: {{spec}}
-      <br>
-      <b>PASSWORD: </b> {{password}}
     </li>
   </ol>
   {% endfor %}

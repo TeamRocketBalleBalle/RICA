@@ -1,13 +1,16 @@
 {% extends "base_navbar.html" %}
 
 {% block CSS_File %}
-<link rel="stylesheet" href="style_Appointment.css" />
+<link rel="stylesheet" href="static/style_Appointment.css"  />
 {% endblock %}
 
 {% block main %}
 
 <div class="cover-img">
-  <img src="Humaaans test 2.png" alt="Artistic Doctor" text-align: centre; />
+  <img
+            src="static/assets/LabCoatHumanCentered.svg"
+            alt="Artistic Doctor"
+          />
 </div>
 
 <div class="t">
@@ -19,19 +22,19 @@
     Kindly enter your symptoms (You may separated your symptoms by a comma)
   </h2>
   <br><br>
-  <input class="box" type="text">
-  {% for index, name in enumerate(docs) %}
-      <div class="doc{{index}}">
-        <h2> {{name}} </h2>
+  <input class="box" type="text" , placeholder="Symptoms pls">
+  {% for name in docs %}
+      <div class="doc{{loop.index}}">
+        <h2> {{name[0]}} </h2>
         <br>
-        <button class="butt" onclick="appoint({{index}})">Book Your Appointment!</button>
+        <button class="but" onclick="appoint({{loop.index}})">Book Your Appointment!</button>
 
-        <p id="demo{{index}}"></p>
+        <p id="demo{{loop.index}}"></p>
         <br><br>
 
 
       </div>
-
+  {% endfor %}
 <a class="submit" href="response%20submission.html">
   <h3>Submit</h3>
 </a>
