@@ -6,14 +6,26 @@
     width: auto;
 }
 .But{
-    position: relative;
-    left:70% ;
+    position:absolute;
+    left:50% ;
     bottom: -210px;
+   
+    border: none;  
     
+        
+        top: 75%;
+        left: 70%;
+        transform: translate(-50%, -50%);
+      
+    
+    
+        
+      
     
 }
 .greet{
     text-align: center;
+}
    
 .cover-img {
     flex: 3;
@@ -31,7 +43,13 @@
     background: linear-gradient(180deg, #ffffff 64.12%, #6ef0d4 164.45%) no-repeat;
     min-height: 100vh;
   }
-  .patientIRA{
-      border-style: outset;
+  .but1{
+      background-color:aquamarine;
+      border-style: groove;
   }
+  .but2{
+    background-color:aquamarine;
+    border-style:groove;
+}
+  
   
