@@ -1,0 +1,125 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    
+  }
+  body {
+    font-family: "Oxygen", sans-serif;
+    background: linear-gradient(180deg, #ffffff 64.12%, #6ef0d4 164.45%) no-repeat;
+    min-height: 100vh;
+  }
+  .nav-button {
+    color: #000000;
+    font-size: 18px;
+    text-decoration: none;
+    transition: 1s ease;
+    min-width: 100px;
+    min-height: 30px;
+  }
+  .nav-buttons {
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 0px 20px 0px 20px;
+    margin: 1%;
+    flex: 5;
+  }
+  .nav-button:hover {
+    /* border: 4px solid #575771; */
+    background: rgba(255, 255, 255, 0.46);
+    border-radius: 26px;
+    transition: 200ms ease;
+    width: auto;
+    min-width: 100px;
+    min-height: 30px;
+    height: auto;
+  }
+  .login {
+    flex: 1;
+  }
+  .active {
+    color: #687cfc;
+    background: rgba(255, 255, 255, 0.46);
+    border-radius: 26px;
+  }
+  .nav-button:hover {
+    /* border: 4px solid #575771; */
+    background: rgba(255, 255, 255, 0.46);
+    border-radius: 26px;
+    transition: 200ms ease;
+    width: auto;
+    min-width: 100px;
+    min-height: 30px;
+    height: auto;
+  }
+  nav {
+    background: rgba(110, 240, 212, 0.68);
+    border-radius: 72px;
+    flex: 1;
+    height: auto;
+    display: flex;
+    align-items: center;
+  }
+  .cover-img {
+    flex: 3;
+    /* height: auto;
+    width: auto; */
+    z-index: 1;
+    width: auto;
+    transition: 1s ease;
+    position: absolute;
+    bottom: 75px;
+    
+  }
+  .cover-img img {
+    max-width: 100%;
+    height: auto;
+    opacity: .50;
+    
+  }
+  .t{
+      position: relative;
+      left: 60px;
+      text-align: center;
+      top: 75px;
+  }
+  .but {
+    font-family: "Oxygen", sans-serif;
+    font-weight: 50;
+    font-size: 20px;
+    background: transparent;
+    border: none;
+    background-color: aquamarine;
+    border-radius: 10%;
+    border-style: outset;
+  }
+  .box{
+      width: 450px;
+      height: 45px;
+      font-size: 30px;
+      font-weight: 300;
+
+  }
+  button {
+    font-family: "Oxygen", sans-serif;
+    font-weight: 700;
+    font-size: 25px;
+    background: transparent;
+    border: none;
+  }
+  header {
+    display: flex;
+    margin: auto;
+    margin-top: 1%;
+    width: 70%;
+    min-height: 10vh;
+    align-items: center;
+  }
+  .submit{
+    position: relative;
+    left: 1150px;
+    bottom: -100px;
+
+  }
+  
