@@ -1,0 +1,45 @@
+{% extends "base_navbar.html" %}
+
+{% block CSS_File %}
+<link rel="stylesheet" href="style_Appointment.css" />
+{% endblock %}
+
+{% block main %}
+
+<div class="cover-img">
+  <img src="Humaaans test 2.png" alt="Artistic Doctor" text-align: centre; />
+</div>
+
+<div class="t">
+  <h1>
+    Book Your Appointment
+  </h1>
+  <br><br>
+  <h2>
+    Kindly enter your symptoms (You may separated your symptoms by a comma)
+  </h2>
+  <br><br>
+  <input class="box" type="text">
+  {% for index, name in enumerate(docs) %}
+      <div class="doc{{index}}">
+        <h2> {{name}} </h2>
+        <br>
+        <button class="butt" onclick="appoint({{index}})">Book Your Appointment!</button>
+
+        <p id="demo{{index}}"></p>
+        <br><br>
+
+
+      </div>
+
+<a class="submit" href="response%20submission.html">
+  <h3>Submit</h3>
+</a>
+</div>
+<script>
+          function appoint(index_number) {
+
+            document.getElementById("demo" + index_number).innerHTML = "<input type=\"datetime-local\" id=\"time\" value=\"time\" >";
+          }
+</script>
+{% endblock %}
