@@ -29,7 +29,14 @@ def connect_and_close(func):
 
 
 @connect_and_close
-def check_existence(em, cur):
+def check_existence(em: str, cur):
+    """
+    checks whether the argument `em` [email] exists in the database or not.
+    returns boolean for that
+    :param em: email
+    :param cur: the sqlite cursor object
+    :return: bool
+    """
     # os.chdir("../Database")
     # print(f"databse_connection ke andar: {os.getcwd()}")
     # breakpoint()
@@ -38,7 +45,7 @@ def check_existence(em, cur):
 
 
 @connect_and_close
-def get_user_type(em: str, cur):
+def get_user_type(em: str, cur) -> str:
     """
     Get's the user type from database using email as key
     :param em: emaail
@@ -50,19 +57,36 @@ def get_user_type(em: str, cur):
 
 
 @connect_and_close
-def get_password(em, cur):
+def get_password(em: str, cur):
+    """
+    returns the **PLAIN TEXT** password for a given email
+    :param em: email
+    :param cur: the sqlite cursor object
+    :return: str
+    """
     typ = get_user_type(em)
     cur.execute(f"SELECT pass from {typ}s WHERE email = \"{em}\"")
     return str(cur.fetchall()[0][0])
 
 
 @connect_and_close
-def get_all_docs(cur):
+def get_all_docs(cur) -> tuple:
+    """
+    returns a tuple of doctors from the database
+    :param cur: the sqlite cursor object
+    :return: tuple
+    """
     return cur.execute("""SELECT name, specialization, loc, pass FROM Doctors""").fetchall()
 
 
 @connect_and_close
-def get_doc_names(spec: str, cur):
+def get_doc_names(spec: str, cur) -> tuple:
+    """
+    Given a category [specialisation] of doctors fetch all the matching docs from the database
+    :param spec: specialisation
+    :param cur: the sqlite cursor object
+    :return: tuple
+    """
     return cur.execute(f"SELECT name from Doctors where specialization == '{spec}'").fetchall()
 
 

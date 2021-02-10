@@ -6,6 +6,11 @@ bp = Blueprint("chemists", __name__, url_prefix="/chemists", static_folder='stat
 
 @bp.route("")
 def chemists_page() -> 'html':
+    """
+    This function handles the requests for Landing page for the chemists category.
+    This function also performs `is_logged_in?` verification check too before letting them access member-only content
+    :return: html
+    """
     PAGE_TITLE = "Chemist"
     # If user is not logged in
     current_app.logger.debug(f"Before calling function: {os.getcwd()}")

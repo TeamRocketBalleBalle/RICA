@@ -8,6 +8,13 @@ bp = Blueprint("patients", __name__, url_prefix="/patients", static_folder='stat
 
 @bp.route("")
 def patients_page() -> 'html':
+    """
+    This function handles the requests for Landing page for the patients category.
+    This function also performs `is_logged_in?` verification check too before letting them access member-only content
+
+    ||[low key sounds like handling youtube membership😆]||
+    :return: html
+    """
     PAGE_TITLE = "Patient"
     # If user is not logged in
     current_app.logger.debug(f"Before calling function: {os.getcwd()}")
@@ -33,7 +40,12 @@ def patients_page() -> 'html':
 
 
 @bp.route("/retrieve")
-def retrieve_docs(doc_ocs=None) -> html:
+def retrieve_docs(doc_ocs=None) -> "html":
+    """
+    Test function to check whether for-looping works to display the docs
+    :param doc_ocs: the list containing doctors
+    :return: 'html'
+    """
     return render_template("retrieve_docOcs.html", page_title="Testing", dictionary=f"{dict(session)}",
                            gif_link="https://cdn.discordapp.com/emojis/768874484429226004.gif?v=1",
                            doc_ocs=doc_ocs
@@ -41,14 +53,22 @@ def retrieve_docs(doc_ocs=None) -> html:
 
 
 @bp.route("/appointment", methods=["GET", "POST"])
-def appointments() -> html:
+def appointments() -> "html":
+    """
+    The handler function to display the page to book appointments
+    :return: html
+    """
     if request.form:
         doc = get_doc_names(request.form["docs"])
         current_app.logger.debug(Fore.WHITE + f"CATEGORY RECEIVED:- {request.form['docs']}")
         current_app.logger.debug(Fore.WHITE + f"DB respond sent:- {doc}")
-        return render_template("appointment_booking.html", page_title="Testing", dictionary=f"{dict(session)}",
+        return render_template(
+            "appointment_booking.html",
+            page_title="Testing",
+            dictionary=f"{dict(session)}",
                                gif_link="https://cdn.discordapp.com/emojis/768874484429226004.gif?v=1",
                                docs=doc,
+            useBootstrap=True,
                                )
     else:
         docs = []
