@@ -42,7 +42,8 @@ def create_app():
 
     # Configure logging for app.logger
     app.logger.handlers[0].setFormatter(
-        logging.Formatter("%(ip_address)s - - [%(asctime)s] %(levelname)-6s [%(module)s.py]: \"%(message)s\"",
+        logging.Formatter("%(ip_address)s - - [%(asctime)s] %(levelname)-6s [%(module)s.py -> %(funcName)s()]: "
+                          "\"%(message)s\"",
                           datefmt="%d/%b/%Y %H:%M:%S"))
     app.logger.setLevel(10)  # set logger to debug
     app.logger.addFilter(IPFilter())
