@@ -1,0 +1,35 @@
+.greet{
+    text-align: center;
+}
+.mt{
+    position:absolute;
+    left:50% ;
+    bottom: -210px;
+    border: none;     
+    top: 70%;
+    left: 70%;
+    transform: translate(-50%, -50%);    
+}
+.patientIRA{
+    background-color:aquamarine;
+    border-style: groove;
+    display: inline-block;
+    
+}
+.appointmentsofdoc{
+    background-color:aquamarine;
+    border-style: groove;
+    display: inline-block;
+}
+.emergencycall{
+    background-color:aquamarine;
+    border-style: groove;
+    display: inline-block;
+}
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    height: auto;
+    width: auto;
+}
