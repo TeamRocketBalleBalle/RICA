@@ -9,7 +9,7 @@ height: 100%;
   }
   body {
     font-family: "Oxygen", sans-serif;
-    background: linear-gradient(180deg, #ffffff 64.12%, #6ef0d4 164.45%) no-repeat;
+    background: linear-gradient(180deg, #ffffff 64.12%, #6ef0d4 164.45%) no-repeat fixed;
     min-height: 100vh;
   }
   .nav-button {
