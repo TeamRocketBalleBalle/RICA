@@ -1,0 +1,43 @@
+{% extends 'base_navbar.html' %}
+
+{% block CSS_File %}
+<link rel="stylesheet" href="{{ url_for('static', filename='patients_landing_page.css') }}" />
+{% endblock %}
+
+{% block main %}
+
+<main>
+      <div class="heading">
+        <div class="cover-text">
+          <h1>Patient's Page</h1>
+          <h2>Welcome </h2>
+        </div>
+      </div>
+      <ul class="page-buttons">
+        <li>
+          <button type="button" class="w-50 btn-lg btn btn-primary">
+            <a href="#">Your IRA</a>
+          </button>
+        </li>
+        <li>
+          <button type="button" class="w-50 btn-lg btn btn-primary">
+            <a href="{{ url_for('patients.appointments') }}">Appointments</a>
+          </button>
+        </li>
+        <li>
+          <button type="button" class="w-50 btn-lg btn btn-primary">
+            <a href="#">Emergency Call</a>
+          </button>
+        </li>
+      </ul>
+    </main>
+<div class="cover-img">
+  <img
+    src="{{ url_for('static', filename='assets/LabCoatHumanCentered.svg') }}"
+    alt="Artistic Doctor"
+    text-align:
+    centre;
+  />
+</div>
+
+{% endblock %}

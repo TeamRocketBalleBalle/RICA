@@ -1,0 +1,110 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  height: auto;
+  width: auto;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+a:hover {
+  color: inherit;
+}
+.greet {
+  text-align: center;
+}
+.mt {
+  position: absolute;
+  left: 50%;
+  bottom: -210px;
+  border: none;
+  top: 70%;
+  left: 70%;
+  transform: translate(-50%, -50%);
+}
+.patientIRA {
+  background-color: aquamarine;
+  border-style: groove;
+  display: inline-block;
+}
+.appointmentsofdoc {
+  background-color: aquamarine;
+  border-style: groove;
+  display: inline-block;
+}
+.emergencycall {
+  background-color: aquamarine;
+  border-style: groove;
+  display: inline-block;
+}
+main {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+.heading {
+  margin-bottom: 3vh;
+}
+.cover-text {
+  margin-top: 3vh;
+}
+.cover-text h1 {
+  font-size: 60px !important;
+  line-height: normal;
+}
+
+.cover-text h2 {
+  font-size: 30px;
+  line-height: 44px;
+  padding-left: 8px;
+  color: #5b6cdb;
+}
+.page-buttons {
+  list-style: none;
+  min-height: 50vh;
+  display: flex;
+  /* flex-direction: column; */
+  margin-top: 3vh;
+  /* max-width: 80%; */
+  min-width: 70%;
+  padding: 0;
+  margin: auto;
+}
+.page-buttons li {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn-primary {
+  background: rgba(110, 240, 212, 0.68);
+  color: black;
+  transition: 0.5s ease;
+  border: none;
+}
+.btn-primary:hover {
+  background: #6ae6a8;
+  transition: 0.5s ease;
+}
+.cover-img {
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  position: absolute;
+  width: 80vh;
+  bottom: 0%;
+  z-index: -1;
+}
+.cover-img img {
+  filter: blur(5px);
+}
+
+/* Mobile CSS */
+@media screen and (max-width: 1024px) {
+  .page-buttons {
+    flex-direction: column;
+  }
+}
