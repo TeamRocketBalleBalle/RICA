@@ -1,85 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <title>
-        Doctors page
-    </title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="Doctor'spage.css" />
 
+<head>
+  <title>
+    Doctors page
+  </title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="Doctor'spage.css" />
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 
 </head>
 <header>
-    <nav>
-        <div class="login">
-          <center>
-            <a href="/">
-              <button class="home">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="30"
-                  height="30"
-                  viewBox="0 0 24 24"
-                  fill="#687CFC"
-                >
-                  <path
-                    d="M12 1l-12 12h3v10h18v-10h3l-12-12zm0 18c-1.607-1.626-3-2.84-3-4.027 0-1.721 2.427-2.166 3-.473.574-1.695 3-1.246 3 .473 0 1.187-1.393 2.402-3 4.027zm8-11.907l-3-3v-2.093h3v5.093z"
-                  />
-                </svg>
-              </button>
-            </a>
-          </center>
-        </div>
-        <ul class="nav-buttons">
-          <li>
-            <a href="/patients"><button class="nav-button">Patients</button></a>
-          </li>
-          <li>
-            <a href="/doctors"><button class="nav-button">Doctors</button></a>
-          </li>
-          <li>
-            <a href="/chemists"><button class="nav-button">Chemists</button></a>
-          </li>
-        </ul>
-        <div class="login">
-          <center>
-            <a href="/login">
-              <button class="home">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="#687CFC"
-                >
-                  <path
-                    d="M10 2v2h12v16h-12v2h14v-20h-14zm0 7.408l2.963 2.592-2.963 2.592v-1.592h-8v-2h8v-1.592zm-2-4.408v4h-8v6h8v4l8-7-8-7z"
-                  />
-                </svg>
-              </button>
-            </a>
-          </center>
-        </div>
-      </nav>
+  <nav>
+    <div class="login">
+      <center>
+        <a href="/">
+          <button class="home">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="#687CFC">
+              <path
+                d="M12 1l-12 12h3v10h18v-10h3l-12-12zm0 18c-1.607-1.626-3-2.84-3-4.027 0-1.721 2.427-2.166 3-.473.574-1.695 3-1.246 3 .473 0 1.187-1.393 2.402-3 4.027zm8-11.907l-3-3v-2.093h3v5.093z" />
+            </svg>
+          </button>
+        </a>
+      </center>
+    </div>
+    <ul class="nav-buttons">
+      <li>
+        <a href="/patients"><button class="nav-button">Patients</button></a>
+      </li>
+      <li>
+        <a href="/doctors"><button class="nav-button">Doctors</button></a>
+      </li>
+      <li>
+        <a href="/chemists"><button class="nav-button">Chemists</button></a>
+      </li>
+    </ul>
+    <div class="login">
+      <center>
+        <a href="/login">
+          <button class="home">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#687CFC">
+              <path
+                d="M10 2v2h12v16h-12v2h14v-20h-14zm0 7.408l2.963 2.592-2.963 2.592v-1.592h-8v-2h8v-1.592zm-2-4.408v4h-8v6h8v4l8-7-8-7z" />
+            </svg>
+          </button>
+        </a>
+      </center>
+    </div>
+  </nav>
 </header>
+
 <body>
-    <div class="greet">
-        <h1>Doctor's Page</h1>
-            <h2>Welcome Doctor</h2>
-        </div>
-<div class="But">
+  <main>
+    <div class="heading">
+      <div class="cover-text">
+        <h1>Doctor's Pages</h1>
+        <h2>Welcome Doctor</h2>
+      </div>
+    </div>
 
-<button class="but1" type="button"><h4>Patient's IRA</h4></button>
-
-<br><br><br><br>
-
-<button class="but2" type="button"><h4>View your appointment</h4></button>
-
-
-<br>
-</div>
-<div class="cover-img">
-    <img src="Humaaans test 2.png" alt="Artistic Doctor" text-align: centre; />
+    <ul class="page-buttons">
+      <li>
+        <button type="button" class="btn btn-primary" href="#mydiv1" role="button" aria-expanded="false"
+          aria-controls="collapseExample" data-toggle="collapse">
+          <h4>Patient's IRA</h4>
+        </button>
+        <div class="collapse" id="mydiv1">shreyansh</div>
+      </li>
+      <li>
+        <button type="button" class="btn  btn-primary" data-toggle="collapse" data-target="#mydiv2">
+          <h4>View your appointment</h4>
+        </button>
+        <div class="collapse" id="mydiv2">bhai</div>
+      </li>
+    </ul>
+  </main>
+  <div class="cover-img">
+    <img src="LabCoatHumanCentered.svg" alt="Artistic Doctor" text-align: centre; />
   </div>
+
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+    crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
 </body>
+
 </html>
