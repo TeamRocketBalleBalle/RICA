@@ -1,6 +1,5 @@
-# naam sahi karlena iss file ka
-#  name email phone_no specialization location password appointment
-fakeDoctorsKaBioData = [
+# Doctors Table Data
+Doctor_Details = [
     (
         "Dr. Ashok Rajgopal", "Dr. Naresh Trehan", "Prof. Dr. Suresh H. Advani", "Dr. Ashok Seth",
         "Dr. Sandeep Vaishya", "Dr IPS Oberoi", "Prof. Dr. Mohamed Rela", "Dr Randhir Sud", "Dr. Arvinder Singh Soin",
@@ -39,15 +38,88 @@ fakeDoctorsKaBioData = [
         "xNW98y", "2pmXm", "N6WiytSI", "bek7jDxj", "nL2Qr9E7", "cYWEr7ZL", "C6iv1GtF", "qxnqLS4u", "SsyST2bo"
     )
 ]
-l1 = []
+Doctors_Data = []
 
 count = 0
 for i in range(20):
-    l1.append([])
-    for j in range(len(fakeDoctorsKaBioData)):
-        l1[i].append(fakeDoctorsKaBioData[j][i])
-    l1[i].append("{}")
-    l1[i] = tuple(l1[i])
+    Doctors_Data.append([])
+    for j in range(len(Doctor_Details)):
+        Doctors_Data[i].append(Doctor_Details[j][i])
+    Doctors_Data[i].append("{}")
+    Doctors_Data[i].append(i+1)
+    Doctors_Data[i] = tuple(Doctors_Data[i])
     count += 1
-# print(count)
-print(l1)
+print(Doctors_Data)
+# Patients Table Data
+Patients_Details = [
+    (
+        1, 2, 3
+    ),
+    (
+        "Yash", "SHR08OPXD", "MofoAkshat"
+    ),
+    (
+        'ysh@123.com', 'Shr@epic.com', 'Aks@epic.com'
+    ),
+    (
+        1234567891, 3454389841, 6584271395
+    ),
+    (
+        'nothing', 'Hyper Tension', 'Covid Survivor'
+    ),
+    (
+        'Delhi', 'Omicron Noida', 'Delta Noida'
+    ),
+    (
+        '22/06/2003', '08/04/2004 ', '04/08/2001'
+    ),
+    (
+        1, 2, 3
+    ),
+    (
+        "HelloYash", 'testcase1 ', 'testcase2'
+    ),
+    (
+        "{}", "{}", "{}"
+    )]
+
+Patients_Data = []
+for i in range(3):
+    Patients_Data.append([])
+    for j in range(len(Patients_Details)):
+        Patients_Data[i].append(Patients_Details[j][i])
+    Patients_Data[i] = tuple(Patients_Data[i])
+    count += 1
+print(Patients_Data)
+# Chemists Table Data
+Chemists_Details = [
+    (
+        "Ram Gopal", "Gabbar", "Jayant"
+    ),
+    (
+        "ramgopal@123.com", "gabbarakshay@321.com", "jayant@456.com"
+    ),
+    (
+        9876543210, 8976543210, 9384758393
+    ),
+    (
+        4.7, 4.3, 3.9
+    ),
+    (
+        "Borawali East", "Alpha 1", "Gurugram"
+    ),
+    (
+        1, 2, 3
+    ),
+    (
+        "RamG123", "Insaaf", "SaasModeOn"
+    )
+]
+Chemists_Data = []
+for i in range(3):
+    Chemists_Data.append([])
+    for j in range(len(Chemists_Details)):
+        Chemists_Data[i].append(Chemists_Details[j][i])
+    Chemists_Data[i] = tuple(Chemists_Data[i])
+    count += 1
+print(Chemists_Data)
