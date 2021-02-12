@@ -123,3 +123,14 @@ for i in range(3):
     Chemists_Data[i] = tuple(Chemists_Data[i])
     count += 1
 print(Chemists_Data)
+
+# Profiles Table data
+
+Profiles_Data = []
+for i in range(3):
+    Profiles_Data.append((Chemists_Data[i][1],'Chemist'))
+for i in range(3):
+    Profiles_Data.append((Patients_Data[i][2],'Patient'))
+for i in range(20):
+    Profiles_Data.append((Doctors_Data[i][1],'Doctor'))
+print(Profiles_Data)
