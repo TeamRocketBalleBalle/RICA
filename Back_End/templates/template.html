@@ -95,7 +95,7 @@
           <p>
             Team Rocket Balle Balle
             <br>
-            {% if alternateText %} {{alternateText}} {% else %} {{page_title}} {{dictionary}} {% endif %}
+            {% if alternateText %} {{alternateText|safe}} {% else %} {{page_title}} {{dictionary}} {% endif %}
           </p>
         </div>
         <div class="cover-img">

@@ -5,6 +5,7 @@ bp = Blueprint("doctors", __name__, url_prefix="/doctors", static_folder='static
 
 
 @bp.route("")
+@login_required("Doctor")
 def doctors_page() -> 'html':
     """
     This function handles the requests for Landing page for the doctors category.
