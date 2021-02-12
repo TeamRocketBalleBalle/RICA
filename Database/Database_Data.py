@@ -1,5 +1,5 @@
 # Doctors Table Data
-from werkzeug.security import generate_password_hash
+from werkzeug.security import generate_password_hash , check_password_hash
 import logging
 Doctor_Details = [
     (
@@ -95,10 +95,14 @@ for i in range(3):
     Patients_Data.append([])
     for j in range(len(Patients_Details)):
         Patients_Data[i].append(Patients_Details[j][i])
-    Patients_Data[i][8] = generate_password_hash(Patients_Data[i][5])
+    # print(Patients_Data[i][8])
+    Patients_Data[i][8] = generate_password_hash(Patients_Data[i][8])
     Patients_Data[i] = tuple(Patients_Data[i])
     count += 1
 print(Patients_Data)
+# print(check_password_hash(Patients_Data[0][8], "HelloYash"))
+# print(generate_password_hash("HelloYash"))
+# print(Patients_Data[0][8])
 # Chemists Table Data
 Chemists_Details = [
     (
