@@ -1,6 +1,6 @@
 # Doctors Table Data
 from werkzeug.security import generate_password_hash
-
+import logging
 Doctor_Details = [
     (
         "Dr. Ashok Rajgopal", "Dr. Naresh Trehan", "Prof. Dr. Suresh H. Advani", "Dr. Ashok Seth",
@@ -38,6 +38,9 @@ Doctor_Details = [
     (
         "MKF2sh", "nF1B37", "wLP6IY", "66kwQ2", "hFr1bX", "yxE5iwa", "5ZhXG", "1GiIv", "GyBg7d", "sdSb4D", "'HQt8u`",
         "xNW98y", "2pmXm", "N6WiytSI", "bek7jDxj", "nL2Qr9E7", "cYWEr7ZL", "C6iv1GtF", "qxnqLS4u", "SsyST2bo"
+    ),
+    (
+        2008, 2016, 1998, 2017, 1997, 1998, 2008, 2016, 2018, 2005, 1995, 1998, 2007, 2017, 2019, 2014, 2013, 2008, 2006, 2008
     )
 ]
 Doctors_Data = []
@@ -52,7 +55,7 @@ for i in range(20):
     Doctors_Data[i][5] = generate_password_hash(Doctors_Data[i][5])
     Doctors_Data[i] = tuple(Doctors_Data[i])
     count += 1
-print(Doctors_Data)
+print(Doctors_Data[1])
 # Patients Table Data
 Patients_Details = [
     (
@@ -94,7 +97,7 @@ for i in range(3):
     Patients_Data[i][8] = generate_password_hash(Patients_Data[i][5])
     Patients_Data[i] = tuple(Patients_Data[i])
     count += 1
-print(Patients_Data)
+# print(Patients_Data)
 # Chemists Table Data
 Chemists_Details = [
     (
@@ -127,7 +130,7 @@ for i in range(3):
     Chemists_Data[i][6] = generate_password_hash(Chemists_Data[i][6])
     Chemists_Data[i] = tuple(Chemists_Data[i])
     count += 1
-print(Chemists_Data)
+# print(Chemists_Data)
 
 # Profiles Table data
 
@@ -158,3 +161,6 @@ for i in range(20):
 #     Temp_list[5] = generate_password_hash(Temp_list[5])
 #     Doctors_Data[i] = tuple(Temp_list)
 # print(Doctors_Data)
+data = logging.getLogger("Data Updated")
+
+data.debug("Data Updated Successfully")

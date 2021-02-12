@@ -1,4 +1,6 @@
 import sqlite3
+import logging
+table_making = logging.getLogger("Table Make")
 # Creating Connection with Database
 
 conn = sqlite3.connect('Rica_AlphaV0.1.db')
@@ -16,8 +18,10 @@ cur.execute("""CREATE TABLE Doctors(
     specialization TEXT,
     loc TEXT,
     pass TEXT,
+    Year INTEGER,
     appointment BLOB,
-    UID INTEGER)""")
+    UID INTEGER
+    )""")
 # Making Patients Tables
 cur.execute("""CREATE TABLE Patients(
     reg_no INTEGER,  
@@ -46,6 +50,6 @@ cur.execute("""CREATE TABLE Profiles(
     email TEXT,
     UType TEXT)
 """)
-print("EXECUTED SUCCESSFULLY")
+table_making.debug("Tables Created")
 conn.commit()
 conn.close()
