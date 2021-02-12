@@ -56,7 +56,7 @@ for i in range(20):
     Doctors_Data[i][5] = generate_password_hash(Doctors_Data[i][5])
     Doctors_Data[i] = tuple(Doctors_Data[i])
     count += 1
-print(Doctors_Data[1])
+print(Doctors_Data)
 # Patients Table Data
 Patients_Details = [
     (
@@ -98,7 +98,7 @@ for i in range(3):
     Patients_Data[i][8] = generate_password_hash(Patients_Data[i][5])
     Patients_Data[i] = tuple(Patients_Data[i])
     count += 1
-# print(Patients_Data)
+print(Patients_Data)
 # Chemists Table Data
 Chemists_Details = [
     (
@@ -131,7 +131,7 @@ for i in range(3):
     Chemists_Data[i][6] = generate_password_hash(Chemists_Data[i][6])
     Chemists_Data[i] = tuple(Chemists_Data[i])
     count += 1
-# print(Chemists_Data)
+print(Chemists_Data)
 
 # Profiles Table data
 
