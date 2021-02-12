@@ -88,4 +88,3 @@ def book_appointment() -> html:
         current_app.logger.debug(Fore.BLUE + f"Request received: {request.form}")
         return render_template("patients/response_submission.html")
     return redirect("/patients")
-
