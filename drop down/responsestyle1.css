@@ -4,5 +4,14 @@
 position: relative;
     bottom: -100px;
     background-color: #3ee6c1;
+    
 
 }
+.cover-img{
+       position: relative;
+       left: 25%;
+       
+}
+.cover-img img {
+    filter: blur(5px);
+  }

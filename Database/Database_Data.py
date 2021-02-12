@@ -1,5 +1,5 @@
 # Doctors Table Data
-from werkzeug.security import generate_password_hash
+from werkzeug.security import generate_password_hash , check_password_hash
 import logging
 Doctor_Details = [
     (
@@ -17,9 +17,9 @@ Doctor_Details = [
         'sandeep34lmao@live.in', 'sumana01munana@gmail.com', 'ashokvaid@gmail.com', 'pradeepsharma.01@gmail.com'
     ),
     (
-        3477302818, 8331300318, 6229702617, 9047300542, 8099201418, 6306582135, 5245565495, 7329986346, 7738649485,
-        7105693129, 5406633723, 6456022686, 9936262722, 6622662208, 8304651662, 5261174285, 9466204636, 8820565072,
-        5236879086, 8279031741
+        9477302818, 9331300318, 6229702617, 9047300542, 8099201418, 6306582135, 9245565495, 7329986346, 7738649485,
+        7105693129, 9406633723, 6456022686, 9936262722, 6622662208, 8304651662, 9261174285, 9466204636, 8820565072,
+        9236879086, 9279031741
     ),
     (
         "Cardiologist", "Paediatrician", "ENT specialist", "Psychiatrists", "Dentist", "Paediatrician",
@@ -56,7 +56,7 @@ for i in range(20):
     Doctors_Data[i][5] = generate_password_hash(Doctors_Data[i][5])
     Doctors_Data[i] = tuple(Doctors_Data[i])
     count += 1
-print(Doctors_Data[1])
+print(Doctors_Data)
 # Patients Table Data
 Patients_Details = [
     (
@@ -95,10 +95,14 @@ for i in range(3):
     Patients_Data.append([])
     for j in range(len(Patients_Details)):
         Patients_Data[i].append(Patients_Details[j][i])
-    Patients_Data[i][8] = generate_password_hash(Patients_Data[i][5])
+    # print(Patients_Data[i][8])
+    Patients_Data[i][8] = generate_password_hash(Patients_Data[i][8])
     Patients_Data[i] = tuple(Patients_Data[i])
     count += 1
-# print(Patients_Data)
+print(Patients_Data)
+# print(check_password_hash(Patients_Data[0][8], "HelloYash"))
+# print(generate_password_hash("HelloYash"))
+# print(Patients_Data[0][8])
 # Chemists Table Data
 Chemists_Details = [
     (
@@ -131,7 +135,7 @@ for i in range(3):
     Chemists_Data[i][6] = generate_password_hash(Chemists_Data[i][6])
     Chemists_Data[i] = tuple(Chemists_Data[i])
     count += 1
-# print(Chemists_Data)
+print(Chemists_Data)
 
 # Profiles Table data
 
