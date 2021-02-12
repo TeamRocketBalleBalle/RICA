@@ -21,6 +21,7 @@
           <a href="/patients">
             <button class="nav-button {{'active' if page_title.lower() == 'patients' else ''}}">
               Patients
+              <a href="merger.html"></a>
             </button>
           </a>
         </li>
@@ -42,8 +43,7 @@
   <div class="heading">
     <div class="cover-text">
       <h1>Book Your Appointment</h1>
-      <h2>Kindly select a doctor and submit that assignment duely on time,
-        otherwise late penalty will be applied
+      <h2>Kindly select your desired doctor, book an appointment and you're ready to go.
       </h2>
     </div>
   </div>
@@ -54,16 +54,21 @@
         <div class="accordian-header" id="doc1">
           <button class="but accordian-button collapsed" type="button" data-bs-toggle="collapse"
             data-bs-target="#doc-form-1">Dr. Vatsal [Head CSSOLOGIST]</button>
+
         </div>
         <form action="">
           <div class="accordian-collapse accordian-body collapse" id="doc-form-1" data-bs-parent="#doctors-list">
             <input type="datetime-local" name="datetime" id="datetime" required />
-            <textarea name="symptoms" wrap="hard" id="" cols="50" rows="3" form="doc1">
-              </textarea>
-             <button><a href="response%20submission.html">Submit</a></button>
+            <br>
+            <textarea name="symptoms" wrap="hard" id="" cols="50" rows= "auto" form="doc1" placeholder="Enter Symptoms and date(above)"></textarea>
+
+              <div class="submit_button1">
+             <button><a href="response%20submission.html">Submit</a></button> </div>
           </div>
         </form>
+
       </div>
+
 
       <div class="accordian-item">
         <div class="accordian-header" id="doc2">
@@ -73,11 +78,14 @@
         <form action="">
           <div class="accordian-collapse accordian-body collapse" id="doc-form-2" data-bs-parent="#doctors-list">
             <input type="datetime-local" name="datetime" id="datetime" required />
-            <textarea name="symptoms" wrap="hard" id="" cols="50" rows="3" form="doc2"></textarea>
-             <button><a href="response%20submission.html">Submit</a></button>
+            <br>
+            <textarea name="symptoms" wrap="hard" id="" cols="50" rows="auto" form="doc2" placeholder="Enter Symptoms and date(above)"></textarea>
+            <div class="submit_button1">
+             <button><a href="response%20submission.html">Submit</a></button></div>
           </div>
         </form>
       </div>
+
 
       <div class="accordian-item">
         <div class="accordian-header" id="doc3">
@@ -86,12 +94,15 @@
         </div>
         <form action="">
           <div class="accordian-collapse accordian-body collapse" id="doc-form-3" data-bs-parent="#doctors-list">
-            <input type="datetime-local" name="datetime" id="datetime" required />
-            <textarea name="symptoms" wrap="hard" id="" cols="50" rows="3" form="doc3"></textarea>
-              <button><a href="response%20submission.html">Submit</a></button>
+
+            <input type="datetime-local" name="datetime" id="datetime" required  />
+            <br>
+            <textarea name="symptoms" wrap="hard" id="" cols="50" rows="auto" form="doc3" placeholder="Enter Symptoms and date(above)"></textarea>
+              <div class="submit_button1"><button><a href="response%20submission.html">Submit</a></button></div>
           </div>
         </form>
       </div>
+
 
       <div class="accordian-item">
         <div class="accordian-header" id="doc4">
@@ -101,11 +112,13 @@
         <form action="">
           <div class="accordian-collapse accordian-body collapse" id="doc-form-4" data-bs-parent="#doctors-list">
             <input type="datetime-local" name="datetime" id="datetime" required />
-            <textarea name="symptoms" wrap="hard" id="" cols="50" rows="3" form="doc2"></textarea>
-             <button><a href="response%20submission.html">Submit</a></button>
+            <br>
+            <textarea name="symptoms" wrap="hard" id="" cols="50" rows="auto" form="doc2" placeholder="Enter Symptoms and date(above)"></textarea>
+             <div class="submit_button1"><button><a href="response%20submission.html">Submit</a></button></div>
           </div>
         </form>
       </div>
+
     </div>
 
     <div class="cover-img">
@@ -128,6 +141,12 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
       crossorigin="anonymous"></script>
+
+      <div class="cover-img">
+        <img src="Humaaans test 2.png" alt="Artistic Doctor" text-align: centre; />
+      </div>
+
+
 </body>
 
 </html>
