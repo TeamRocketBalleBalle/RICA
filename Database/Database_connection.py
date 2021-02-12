@@ -52,7 +52,7 @@ def get_user_type(em: str, cur) -> str:
     :param cur: Sqlite cursor object
     :return: str, any one from  "Patient", "Doctor", "Chemist"
     """
-    cur.execute(f"SELECT Ptype FROM Profiles WHERE email = \"{em}\"")
+    cur.execute(f"SELECT Utype FROM Profiles WHERE email = \"{em}\"")
     return cur.fetchall()[0][0]
 
 
