@@ -1,4 +1,6 @@
 # Doctors Table Data
+from werkzeug.security import generate_password_hash
+
 Doctor_Details = [
     (
         "Dr. Ashok Rajgopal", "Dr. Naresh Trehan", "Prof. Dr. Suresh H. Advani", "Dr. Ashok Seth",
@@ -46,7 +48,8 @@ for i in range(20):
     for j in range(len(Doctor_Details)):
         Doctors_Data[i].append(Doctor_Details[j][i])
     Doctors_Data[i].append("{}")
-    Doctors_Data[i].append(i+1)
+    Doctors_Data[i].append(i + 1)
+    Doctors_Data[i][5] = generate_password_hash(Doctors_Data[i][5])
     Doctors_Data[i] = tuple(Doctors_Data[i])
     count += 1
 print(Doctors_Data)
@@ -88,6 +91,7 @@ for i in range(3):
     Patients_Data.append([])
     for j in range(len(Patients_Details)):
         Patients_Data[i].append(Patients_Details[j][i])
+    Patients_Data[i][8] = generate_password_hash(Patients_Data[i][5])
     Patients_Data[i] = tuple(Patients_Data[i])
     count += 1
 print(Patients_Data)
@@ -120,6 +124,7 @@ for i in range(3):
     Chemists_Data.append([])
     for j in range(len(Chemists_Details)):
         Chemists_Data[i].append(Chemists_Details[j][i])
+    Chemists_Data[i][6] = generate_password_hash(Chemists_Data[i][6])
     Chemists_Data[i] = tuple(Chemists_Data[i])
     count += 1
 print(Chemists_Data)
@@ -128,9 +133,28 @@ print(Chemists_Data)
 
 Profiles_Data = []
 for i in range(3):
-    Profiles_Data.append((Chemists_Data[i][1],'Chemist'))
+    Profiles_Data.append((Chemists_Data[i][1], 'Chemist'))
 for i in range(3):
-    Profiles_Data.append((Patients_Data[i][2],'Patient'))
+    Profiles_Data.append((Patients_Data[i][2], 'Patient'))
 for i in range(20):
-    Profiles_Data.append((Doctors_Data[i][1],'Doctor'))
-print(Profiles_Data)
+    Profiles_Data.append((Doctors_Data[i][1], 'Doctor'))
+
+# print(Profiles_Data)
+
+# Generating Hash Password
+
+#
+# new_password_for_Doctors = []
+# for i in range(20):
+#     new_password_for_Doctors.append(generate_password_hash(Doctors_Data[i][5]))
+# # for i in range(20):
+# #     Temp_List = list(Doctors_Data[i])
+# #     print(Temp_List[5])
+# #     print(type(Doctors_Data[i][5]))
+# # print(new_password_for_Doctors)
+#
+# for i in range(20):
+#     Temp_list = list(Doctors_Data[i])
+#     Temp_list[5] = generate_password_hash(Temp_list[5])
+#     Doctors_Data[i] = tuple(Temp_list)
+# print(Doctors_Data)
