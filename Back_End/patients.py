@@ -1,4 +1,4 @@
-from flask import request
+from flask import request, redirect
 
 from Back_End.common_modules import *
 
@@ -7,6 +7,7 @@ bp = Blueprint("patients", __name__, url_prefix="/patients", static_folder='stat
 
 
 @bp.route("")
+@login_required(page_type="Patient")
 def patients_page() -> 'html':
     """
     This function handles the requests for Landing page for the patients category.
@@ -39,7 +40,7 @@ def patients_page() -> 'html':
         useBootstrap=True,
         page_title=f"{PAGE_TITLE}s",
         dictionary=f"{dict(session)}",
-                           gif_link="https://cdn.discordapp.com/emojis/768874484429226004.gif?v=1",
+        gif_link="https://cdn.discordapp.com/emojis/768874484429226004.gif?v=1",
         alternateText=alternate_text,
     )
 
@@ -65,16 +66,26 @@ def appointments() -> "html":
     """
     if request.form:
         doc = get_doc_names(request.form["docs"])
+        # doc = [(doc_id, name) for doc_id, name in enumerate(doc)]
         current_app.logger.debug(Fore.WHITE + f"CATEGORY RECEIVED:- {request.form['docs']}")
         current_app.logger.debug(Fore.WHITE + f"DB respond sent:- {doc}")
         return render_template(
             "appointment_booking.html",
             page_title="Testing",
             dictionary=f"{dict(session)}",
-                               gif_link="https://cdn.discordapp.com/emojis/768874484429226004.gif?v=1",
-                               docs=doc,
+            gif_link="https://cdn.discordapp.com/emojis/768874484429226004.gif?v=1",
+            docs=doc,
             useBootstrap=True,
-                               )
+        )
     else:
         docs = []
     return render_template("doctor.html", page_title="SHR08OPXD page", doc_ocs=docs, useBootstrap=True)
+
+
+@bp.route("/book", methods=["GET", "POST"])
+def book_appointment() -> html:
+    if request.form:
+        current_app.logger.debug(Fore.BLUE + f"Request received: {request.form}")
+        return render_template("patients/response_submission.html")
+    return redirect("/patients")
+

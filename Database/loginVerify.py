@@ -1,4 +1,6 @@
 from Database.Database_connection import *
+from werkzeug.security import check_password_hash, generate_password_hash
+from flask import current_app
 
 
 def login(email: str, password: str) -> bool:
@@ -18,7 +20,8 @@ def login(email: str, password: str) -> bool:
     """
     if check_existence(email):
         # check password now
-        if password == get_password(email):
+        current_app.logger.debug(f"password: {password}\tgenerated hash:{generate_password_hash(password)}\nhash: {get_password(email)}\ncheck_password: {check_password_hash(get_password(email), password)}")
+        if check_password_hash(get_password(email), password):
             return True
         else:
             return False

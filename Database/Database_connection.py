@@ -87,7 +87,7 @@ def get_doc_names(spec: str, cur) -> tuple:
     :param cur: the sqlite cursor object
     :return: tuple
     """
-    return cur.execute(f"SELECT name from Doctors where specialization == '{spec}'").fetchall()
+    return cur.execute(f"SELECT name , UID, Year from Doctors where specialization == '{spec}'").fetchall()
 
 
 if __name__ == "__main__":
@@ -95,3 +95,5 @@ if __name__ == "__main__":
     print(get_user_type("ysh@123.com"))
     print((get_doc_names("Cardiologist")))
     print(get_password("ysh@123.com"))
+
+
