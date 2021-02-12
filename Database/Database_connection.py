@@ -65,7 +65,7 @@ def get_password(em: str, cur):
     :return: str
     """
     typ = get_user_type(em)
-    cur.execute(f"SELECT pass from {typ}s WHERE email = \"{em}\"")
+    cur.execute(f"SELECT password from {typ}s WHERE email = \"{em}\"")
     return str(cur.fetchall()[0][0])
 
 
@@ -76,7 +76,7 @@ def get_all_docs(cur) -> tuple:
     :param cur: the sqlite cursor object
     :return: tuple
     """
-    return cur.execute("""SELECT name, specialization, loc, pass FROM Doctors""").fetchall()
+    return cur.execute("""SELECT name, specialization, loc, password FROM Doctors""").fetchall()
 
 
 @connect_and_close
@@ -94,3 +94,4 @@ if __name__ == "__main__":
     print(check_existence("ysh@123.com"))
     print(get_user_type("ysh@123.com"))
     print((get_doc_names("Cardiologist")))
+    print(get_password("ysh@123.com"))
