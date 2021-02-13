@@ -31,6 +31,6 @@ def doctors_page() -> 'html':
         f"tried to access {PAGE_TITLE}s page "
     )
 
-    return render_template("template.html", page_title=f"{PAGE_TITLE}s", dictionary=f"{dict(session)}",
+    return render_template("doctorP.html", page_title=f"{PAGE_TITLE}s", dictionary=f"{dict(session)}",
                            gif_link="https://cdn.discordapp.com/emojis/791837082237665300.gif?v=1",
                            alternateText=alternate_text)
