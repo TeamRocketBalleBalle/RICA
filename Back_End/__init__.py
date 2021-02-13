@@ -61,9 +61,9 @@ def create_app():
     except ModuleNotFoundError as error:
         print("ModuleNotFoundError:", error)
         print("Are you sure you are running this file from `RICA` or `RICA/Back_End` directory?")
-        print("Try running with `python -m __init__.py` or `python -m app.py` in Back_End.")
+        print("Try running with `python -m __init__` or `python -m app` in Back_End.")
         print("Or if you are running from parent directory, try `python -m Back_End.app` or `python -m "
-              "Back_End.__init__.py`")
+              "Back_End.__init__`")
         quit()
     else:
         app.register_blueprint(landing_page.bp)
