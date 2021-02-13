@@ -6,12 +6,16 @@
 
 
 {% block main %}
+{% if error -%}
+    <div class="alert alert-danger" role="alert" style="max-width: 250px;margin: auto;">
+      Invalid Data time format! 😔
+    </div>
+{% else -%}
+{% endif %}
 <div class="heading">
     <div class="cover-text">
       <h1>Book Your Appointment</h1>
-      <h2>Kindly select a doctor and submit that assignment duely on time,
-        otherwise late penalty will be applied
-      </h2>
+      <h2>Kindly select a doctor</h2>
     </div>
  </div>
 
