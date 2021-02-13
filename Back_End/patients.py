@@ -1,6 +1,9 @@
+import datetime
+from book_appointment.send_appointment import add_appointment
 from flask import request, redirect
 
 from Back_End.common_modules import *
+from Database.Database_connection import get_phone_patient, get_name_patient
 
 # initialising the blueprint
 bp = Blueprint("patients", __name__, url_prefix="/patients", static_folder='static')
@@ -65,13 +68,16 @@ def appointments() -> "html":
     :return: html
     """
     if request.form:
+        # store that request in cookie for future reference.
+        session["last_docs_requested"] = request.form["docs"]
+        # also get the doc
         doc = get_doc_names(request.form["docs"])
         # doc = [(doc_id, name) for doc_id, name in enumerate(doc)]
         current_app.logger.debug(Fore.WHITE + f"CATEGORY RECEIVED:- {request.form['docs']}")
         current_app.logger.debug(Fore.WHITE + f"DB respond sent:- {doc}")
         return render_template(
             "appointment_booking.html",
-            page_title="Testing",
+            page_title="Book Your Doctor",
             dictionary=f"{dict(session)}",
             gif_link="https://cdn.discordapp.com/emojis/768874484429226004.gif?v=1",
             docs=doc,
@@ -86,5 +92,40 @@ def appointments() -> "html":
 def book_appointment() -> html:
     if request.form:
         current_app.logger.debug(Fore.BLUE + f"Request received: {request.form}")
+
+        any_exceptions = False
+        # extracting the data from the form.
+        try:
+            doc_id = int(request.form["doc_id"])
+        except ValueError:
+            current_app.logger.critical(
+                Fore.RED + f"Unable to parse: doc_id {request.form['doc_id']}"
+            )
+            any_exceptions = True
+
+        try:
+            date_time = datetime.datetime.fromisoformat(request.form["datetime"])
+        except ValueError:
+            current_app.logger.critical(
+                Fore.RED + f"Unable to parse: datetime {request.form['datetime']}"
+            )
+            any_exceptions = True
+
+        if any_exceptions:
+            return render_template(
+                "appointment_booking.html",
+                page_title="Book Your Doctor",
+                error=True,
+                useBootstrap=True,
+                docs=get_doc_names(session["last_docs_requested"]),
+            )
+
+        symptoms = request.form["symptoms"].strip(" ")
+        name_of_patient = get_name_patient(session["username"])
+        contact_number = get_phone_patient(session["username"])
+
+        # call that function
+        add_appointment(doc_id, name_of_patient, date_time, contact_number, symptoms)
+
         return render_template("patients/response_submission.html")
     return redirect("/patients")

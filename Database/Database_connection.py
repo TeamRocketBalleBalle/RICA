@@ -100,14 +100,14 @@ def get_password(em: str, cur):
     return str(cur.fetchall()[0][0])
 
 
-@connect_and_close
-def get_all_docs(cur) -> tuple:
-    """
-    returns a tuple of doctors from the database
-    :param cur: the sqlite cursor object
-    :return: tuple
-    """
-    return cur.execute("""SELECT name, specialization, loc, password FROM Doctors""").fetchall()
+# @connect_and_close
+# def get_all_docs(cur) -> tuple:
+#     """
+#     returns a tuple of doctors from the database
+#     :param cur: the sqlite cursor object
+#     :return: tuple
+#     """
+#     return cur.execute("""SELECT name, specialization, loc, password FROM Doctors""").fetchall()
 
 
 @connect_and_close
@@ -142,8 +142,17 @@ def get_name_patient(email: str, cur) -> str:
     :param cur: sqlite cursor object
     :return: str
     """
-    return cur.execute(f"SELECT name from Patients where email = {email};").fetchone()[0]
+    return cur.execute(f"SELECT name from Patients where email = ?;", (email, )).fetchone()[0]
 
+@connect_and_close
+def get_name_doc(doc_id: int, cur) -> str:
+    """
+    returns the name of the doctor of given doc_id
+    :param doc_id: int, doc_id of the patient
+    :param cur: sqlite cursor object
+    :return: str
+    """
+    return cur.execute(f"SELECT name from Doctors where UID = ?;", (doc_id,)).fetchone()[0]
 
 @connect_and_close
 def get_phone_patient(email: str, cur) -> int:
@@ -153,7 +162,7 @@ def get_phone_patient(email: str, cur) -> int:
     :param cur: sqlite cursor object
     :return: int, phone number
     """
-    return cur.execute(f"SELECT Contact_No from Patients where UID = {email};").fetchone()[0]
+    return cur.execute(f"SELECT Contact_No from Patients where email = ?;", (email, )).fetchone()[0]
 
 
 @connect_commit_close
@@ -168,7 +177,7 @@ def set_appointments(doc_id: int, appointment_json: json, cur) -> None:
     appointment_json = json.dumps(appointment_json)
     cur.execute("UPDATE Doctors SET appointment = ? WHERE UID = ?;", (appointment_json, doc_id))
     try:
-        current_app.logger.info(Fore.WHITE + "Successfully updated the appointments in the database")
+        current_app.logger.debug(Fore.WHITE + "Successfully updated the appointments in the database")
     except RuntimeError:
         pass
 
