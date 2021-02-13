@@ -12,14 +12,20 @@ from colorama import Fore
 from Database.Database_connection import (
     get_appointments,
     get_name_patient,
+    get_name_doc,
     get_phone_patient,
 )
 from flask import current_app, session
+from Database.Database_connection import set_appointments
 
 
 # TODO: when doctor request their upcoming appointments then server should move past appointmnets to another list
-def add_apppointment(
-        doc_id: int, name_of_patient: str, date_time, contact_number: int, symptoms: str
+def add_appointment(
+    doc_id: int,
+    name_of_patient: str,
+    date_time: datetime.datetime,
+    contact_number: int,
+    symptoms: str,
 ):
     """
     This function appends the new appointment's data into a JSON.
@@ -28,19 +34,8 @@ def add_apppointment(
     :param date_time: the date/time selected by the patient for the consultation
     :param contact_number: the phone number of the patient
     :param symptoms: the symptoms listed by the patient for the doctor to "prepare in advance" or something
+    :returns: True, if operation succeeded
     """
-    # sanitise datetime here.
-    # TODO: what to do when date/time entered is of wrong form??
-    try:
-        date_time = datetime.datetime.fromisoformat(date_time)
-    except ValueError:
-        current_app.logger.critical(
-            Fore.BLUE
-            + "!!!!"
-            + Fore.RED
-            + f"Invalid date received from {Fore.GREEN + session['username']} : {date_time}"
-        )
-        date_time = datetime.datetime.now()
     # breakpoint()
     old_appointment_list_json = json.loads(get_appointments(doc_id))
     data_to_append = {
@@ -52,7 +47,14 @@ def add_apppointment(
     }
 
     old_appointment_list_json.setdefault("upcoming_appointments", list()).append(data_to_append)
-    return old_appointment_list_json
+    push_to_database(old_appointment_list_json)
+    return True
+
+
+def push_to_database(json_data):
+    doc_id = json_data["upcoming_appointments"][0]["doc_id"]
+    set_appointments(doc_id, json_data)
+    current_app.logger.info(Fore.GREEN + "Pushed appointment data to database for: " + get_name_doc(doc_id))
 
 
 if __name__ == "__main__":
@@ -80,14 +82,14 @@ if __name__ == "__main__":
     # New JSON: {append_appointment(doc_id, name_of_patient, date_time, contact_number, symptoms)}
     # """
     # )
-    
+
     # ImmutableMultiDict([('doc_id', '1'), ('datetime', '2021-02-14T02:00'), ('symptoms', 'pls help me 😢')])
     test = {"doc_id": 1, "datetime": "2021-02-14T02:00", "symptoms": "pls help me 😢"}
-    result = add_apppointment(
+    result = add_appointment(
         test["doc_id"],
-        get_name_patient(session['username']),
+        get_name_patient("ysh@123.com"),  # get_name_patient(session['username']),
         test["datetime"],
-        get_phone_patient(session['username'], ),
+        get_phone_patient("ysh@123.com"),  # get_phone_patient(session['username'], ),
         test["symptoms"],
     )
     print(f"New json yippee: {result}")
