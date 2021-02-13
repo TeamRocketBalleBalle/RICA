@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@700&display=swap" rel="stylesheet">
+    <title>Response Submission</title>
+    <style>
+
+      body {   font-family: 'Open Sans Condensed', sans-serif;
+        background: linear-gradient(90deg, rgb(175, 240, 183) 0%,
+                    rgb(155, 207, 168) 35%, rgb(143, 233, 203) 100%);
+      }
+      .glow {
+        font-size: 70px;
+        color: #ffffff;
+        text-align: center;
+        -webkit-animation: glow 1s ease-in-out infinite alternate;
+        -moz-animation: glow 1s ease-in-out infinite alternate;
+        animation: glow 1s ease-in-out infinite alternate;
+        position: relative;
+        bottom: -200px;
+      }
+      .glow1 {
+        font-size: 25px;
+        color: #ffffff;
+        text-align: center;
+        -webkit-animation: glow 1s ease-in-out infinite alternate;
+        -moz-animation: glow 1s ease-in-out infinite alternate;
+        animation: glow 1s ease-in-out infinite alternate;
+        position: relative;
+        bottom: -200px;
+        z-index: 1;
+      }
+      @-webkit-keyframes glow {
+        from {
+          text-shadow: 0 0 10px #dd2020, 0 0 20px #000000, 0 0 30px #000000, 0 0 40px #000000,
+                       0 0 50px #7f0cb4, 0 0 60px #740ba5, 0 0 70px #370350;
+        }
+        to {
+          text-shadow: 0 0 20px #e92323, 0 0 30px #850646, 0 0 40px #790a41, 0 0 50px #79063f,
+                       0 0 60px #dd1c1c, 0 0 70px #b3035b, 0 0 80px #4e092c;
+        }
+      }
+      .res{
+
+    text-align: center;
+    position: relative;
+    bottom: -100px;
+    background-color: #3ee6c1;
+              }
+      .cover-img{
+          position:absolute;
+             left: 25%;
+            }
+      .cover-img img {
+         filter: blur(5px);
+           z-index: -1;
+            }
+    </style>
+  </head>
+  <body>
+    <h1 class="glow">You have been logged out successfully </h1>
+    <h3 class="glow1">You will be redirected to the main page</h3>
+    <div class="cover-img">
+        <img src="Humaaans%20test%202.png" alt="Artistic "  />
+      </div>
+
+  </body>
+</html>
