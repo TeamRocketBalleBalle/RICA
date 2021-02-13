@@ -206,8 +206,6 @@ def login_page() -> 'html':
         # -------- Log out user ---------------
         app.logger.debug(Fore.CYAN + f"LOGGING OUT: {session['username']}")
         session.clear()
-        # TODO: replace LOGGED OUT with the html file which shows the message logged out
-        # Maybe use the bootstrap thingy on login page but instead change the color and text
         return "LOGGED OUT"
 
     else:
@@ -220,7 +218,7 @@ def jinja_test() -> "html":
 
 @app.route('/test')
 def test():
-    return render_template("patients/response_submission.html")
+    return render_template("log_out.html")
 
 
 app.run(debug=True)
