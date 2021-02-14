@@ -122,6 +122,16 @@ def get_doc_names(spec: str, cur) -> tuple:
 
 
 @connect_and_close
+def get_doc_id(email:str, cur) -> int:
+    """
+    gets the doc's UID from the email
+    :param email: str, email of doctor
+    :param cur: sqlite cursor object
+    :return: int, UID from doctor
+    """
+    return cur.execute("SELECT UID from Doctors where email = ?", (email, )).fetchone()[0]
+
+@connect_and_close
 def get_appointments(doc_id: int, cur) -> json:
     """
     returns the json of appointments of a doctor of given doc_id
@@ -130,7 +140,7 @@ def get_appointments(doc_id: int, cur) -> json:
     :return: json
     """
     return cur.execute(
-        f"SELECT appointment FROM Doctors where UID = {doc_id};"
+        "SELECT appointment FROM Doctors where UID = ?;", (doc_id, )
     ).fetchone()[0]
 
 
@@ -181,6 +191,8 @@ def set_appointments(doc_id: int, appointment_json: json, cur) -> None:
     cur.execute("UPDATE Doctors SET appointment = ? WHERE UID = ?;", (appointment_json, doc_id))
     try:
         current_app.logger.debug(Fore.WHITE + "Successfully updated the appointments in the database")
+        current_app.logger.debug(Fore.WHITE + f"moved what? this: {appointment_json}")
+
     except RuntimeError:
         pass
 
