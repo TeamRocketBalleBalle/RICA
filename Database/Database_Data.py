@@ -66,7 +66,7 @@ Patients_Details = [
         "Yash", "SHR08OPXD", "MofoAkshat"
     ),
     (
-        'ysh@123.com', 'Shr@epic.com', 'Aks@epic.com'
+        'ysh@123.com', 'shr@epic.com', 'aks@epic.com'
     ),
     (
         1234567891, 3454389841, 6584271395
