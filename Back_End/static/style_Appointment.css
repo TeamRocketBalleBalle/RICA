@@ -8,9 +8,11 @@ html {
 }
 body {
   font-family: "Oxygen", sans-serif;
-  background: linear-gradient(180deg, #ffffff 64.12%, #6ef0d4 164.45%) no-repeat
+  background: linear-gradient(90deg, rgb(72, 176, 224) 0%,
+                    rgb(255,255,255) 50%, rgb(72, 176, 224) 100%); no-repeat
     fixed;
   min-height: 100vh;
+
 }
 .nav-button {
   color: #000000;
@@ -72,7 +74,7 @@ nav {
   margin-right: auto;
   position: absolute;
   width: 80vh;
-  bottom: 0%;
+  bottom: 19%;
   z-index: -1;
 }
 .cover-img img {
@@ -99,6 +101,7 @@ main {
   left: 60px;
   text-align: center;
   top: 50px;
+  display: flex;
 }
 
 .but {
@@ -113,6 +116,7 @@ main {
   border-radius: 15px;
   box-shadow: 0 9px #999;
   transition: 1.5s ease;
+  opacity: 0.72;
 }
 .but:hover {
   background: rgba(255, 255, 255, 0.46);
@@ -144,4 +148,37 @@ header {
   position: relative;
   left: 1050px;
   bottom: -70px;
+}
+.accordian{
+  display: flex;
+  flex-direction:column;
+  justify-content: space-between;
+  flex: .45;
+
+}
+
+
+
+.submit-button{
+  border: 2px outset blue;
+  background-color:lightblue;
+  /*height : 40px;
+  position: relative;
+  width : 150px;
+  top: -20%;
+  left:45%; */
+  cursor: pointer;
+  text-decoration: none;
+}
+a{
+    text-decoration: none;
+}
+.flexer {
+    display: flex;
+    align-content: center;
+    margin-top: 1%;
+    max-width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: space-evenly;
 }

@@ -1,3 +1,9 @@
+import sys
+import os
+from pathlib import Path
+current_path = Path(os.getcwd())
+sys.path.append(str(current_path.parent))
+
 from colorama import Fore, init
 import logging
 
@@ -50,12 +56,21 @@ def create_app():
 
     # Registering the blueprints
     # Landing page
-    from Back_End import landing_page, patients, doctors, chemists, login
-    app.register_blueprint(landing_page.bp)
-    app.register_blueprint(patients.bp)
-    app.register_blueprint(doctors.bp)
-    app.register_blueprint(chemists.bp)
-    app.register_blueprint(login.bp)
+    try:
+        from Back_End import landing_page, patients, doctors, chemists, login
+    except ModuleNotFoundError as error:
+        print("ModuleNotFoundError:", error)
+        print("Are you sure you are running this file from `RICA` or `RICA/Back_End` directory?")
+        print("Try running with `python -m __init__` or `python -m app` in Back_End.")
+        print("Or if you are running from parent directory, try `python -m Back_End.app` or `python -m "
+              "Back_End.__init__`")
+        quit()
+    else:
+        app.register_blueprint(landing_page.bp)
+        app.register_blueprint(patients.bp)
+        app.register_blueprint(doctors.bp)
+        app.register_blueprint(chemists.bp)
+        app.register_blueprint(login.bp)
 
     return app
 

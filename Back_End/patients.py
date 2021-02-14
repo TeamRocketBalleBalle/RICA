@@ -1,5 +1,5 @@
 import datetime
-from book_appointment.send_appointment import add_appointment
+from .book_appointment.send_appointment import add_appointment
 from flask import request, redirect
 
 from Back_End.common_modules import *

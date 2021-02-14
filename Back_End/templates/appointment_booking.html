@@ -30,13 +30,12 @@
       </div>
 
       <form action="book" id="form-doc-{{ loop.index }}" method="POST">
-        <div class="accordian-collapse accordian-body collapse" id="doc-form-{{ loop.index }}" data-bs-parent="#doctors-list">
+        <div class="accordian-collapse accordian-body collapse flexer" id="doc-form-{{ loop.index }}" data-bs-parent="#doctors-list">
           <input type="hidden" name="doc_id" value="{{ id }}" />
-          <label for="datetime-doc-{{ loop.index }}">Date Time</label>
+          <label for="datetime-doc-{{ loop.index }}" style="align-self: center;">Date Time</label>
           <input type="datetime-local" name="datetime" id="datetime-doc-{{ loop.index }}" required />
-          <textarea name="symptoms" wrap="hard" id="" cols="50" rows="3" form="form-doc-{{ loop.index }}" placeholder="Enter your symptoms here">
-            </textarea>
-           <button type="submit" value="submit" >Submit</button>
+          <textarea name="symptoms" id="" cols="50" rows="auto" form="form-doc-{{ loop.index }}" placeholder="Enter Symptoms and date(above)" wrap="hard"></textarea>
+           <button class="submit-button" type="submit" value="submit" >Submit</button>
         </div>
       </form>
     </div>
@@ -47,7 +46,7 @@
 </main>
 
   <div class="cover-img">
-    <!-- <img src="Humaaans test 2.png" alt="Artistic Doctor" text-align: centre; /> -->
+     <img src="static/assets/LabCoatHumanCentered.svg" alt="Artistic Doctor" text-align: centre; />
   </div>
   <!-- JavaScript Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
