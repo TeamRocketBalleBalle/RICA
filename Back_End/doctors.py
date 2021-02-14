@@ -1,4 +1,5 @@
 from Back_End.common_modules import *
+from Database.Database_connection import get_name_doc
 
 # Initialising the Blueprint
 bp = Blueprint("doctors", __name__, url_prefix="/doctors", static_folder='static')
@@ -30,7 +31,8 @@ def doctors_page() -> 'html':
         f"{'{} [{}]'.format(session['username'], session['type']) if 'username' in session else 'Anonymous'}: "
         f"tried to access {PAGE_TITLE}s page "
     )
-
-    return render_template("template.html", page_title=f"{PAGE_TITLE}s", dictionary=f"{dict(session)}",
-                           gif_link="https://cdn.discordapp.com/emojis/791837082237665300.gif?v=1",
+    # TODO: show an alert at the top of the page if there's an upcoming appointment in the next 1-2 hour
+    return render_template("doctor_landing_page.html", page_title=f"{PAGE_TITLE}s",
+                           useBootstrap=True,
+                           doc_name = get_name_doc(session['username']),
                            alternateText=alternate_text)

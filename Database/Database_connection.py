@@ -145,14 +145,17 @@ def get_name_patient(email: str, cur) -> str:
     return cur.execute(f"SELECT name from Patients where email = ?;", (email, )).fetchone()[0]
 
 @connect_and_close
-def get_name_doc(doc_id: int, cur) -> str:
+def get_name_doc(doc_id_or_mail: int or str, cur) -> str:
     """
     returns the name of the doctor of given doc_id
-    :param doc_id: int, doc_id of the patient
+    :param doc_id_or_mail: int or str, doc_id of the doctor
     :param cur: sqlite cursor object
     :return: str
     """
-    return cur.execute(f"SELECT name from Doctors where UID = ?;", (doc_id,)).fetchone()[0]
+    if isinstance(doc_id_or_mail, int):
+        return cur.execute(f"SELECT name from Doctors where UID = ?;", (doc_id_or_mail,)).fetchone()[0]
+    if isinstance(doc_id_or_mail, str):
+        return cur.execute(f"SELECT name from Doctors where email = ?;", (doc_id_or_mail,)).fetchone()[0]
 
 @connect_and_close
 def get_phone_patient(email: str, cur) -> int:
