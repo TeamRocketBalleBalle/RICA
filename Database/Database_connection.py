@@ -13,9 +13,15 @@ def connect_and_close(func):
     """
 
     def wrap(*args, **kwargs):
-        # print("Before:", os.getcwd())
-        os.chdir("../Database")
-        # print("After:", os.getcwd())
+        # print(f"{func.__name__} Before:", os.getcwd())
+        exception_directory = False
+        try:
+            os.chdir("./Database")
+        except FileNotFoundError:
+            os.chdir("../Database")
+            exception_directory = True
+        # print(f"{func.__name__} After:", os.getcwd())
+        # print(Fore.MAGENTA + f"Function passed: {func.__name__}, arguments: {args}")
         # connect to the database
         conn = sqlite3.connect('Rica_AlphaV0.1.db')
         cur = conn.cursor()
@@ -25,7 +31,11 @@ def connect_and_close(func):
 
         # close the connection to database
         conn.close()
-        os.chdir("../Back_End")
+        if exception_directory:
+            os.chdir("../Back_End")
+        else:
+            os.chdir("../")
+        # print(Fore.GREEN + f"wrapper ke end mein: {os.getcwd()}")
         return result
 
     return wrap
@@ -40,7 +50,12 @@ def connect_commit_close(func):
 
     def wrap(*args, **kwargs):
         # print("Before:", os.getcwd())
-        os.chdir("../Database")
+        exception_directory = False
+        try:
+            os.chdir("./Database")
+        except FileNotFoundError:
+            os.chdir("../Database")
+            exception_directory = True
         # print("After:", os.getcwd())
         # connect to the database
         conn = sqlite3.connect("Rica_AlphaV0.1.db")
@@ -53,7 +68,10 @@ def connect_commit_close(func):
         conn.commit()
         # close the connection to database
         conn.close()
-        os.chdir("../Back_End")
+        if exception_directory:
+            os.chdir("../Back_End")
+        else:
+            os.chdir("../")
         return result
 
     return wrap
@@ -68,7 +86,7 @@ def check_existence(em: str, cur):
     :param cur: the sqlite cursor object
     :return: bool
     """
-    # os.chdir("../Database")
+    # os.chdir("./RICA")
     # print(f"databse_connection ke andar: {os.getcwd()}")
     # breakpoint()
     cur.execute(f'SELECT * FROM Profiles WHERE email = \"{em}\"')
@@ -87,6 +105,17 @@ def get_user_type(em: str, cur) -> str:
     return cur.fetchall()[0][0]
 
 
+def _get_user_type(em: str, cur) -> str:
+    """
+    Get's the user type from database using email as key
+    :param em: emaail
+    :param cur: Sqlite cursor object
+    :return: str, any one from  "Patient", "Doctor", "Chemist"
+    """
+    cur.execute(f"SELECT Utype FROM Profiles WHERE email = \"{em}\"")
+    return cur.fetchall()[0][0]
+
+
 @connect_and_close
 def get_password(em: str, cur):
     """
@@ -95,7 +124,7 @@ def get_password(em: str, cur):
     :param cur: the sqlite cursor object
     :return: str
     """
-    typ = get_user_type(em)
+    typ = _get_user_type(em, cur)
     cur.execute(f"SELECT password from {typ}s WHERE email = \"{em}\"")
     return str(cur.fetchall()[0][0])
 
@@ -122,14 +151,15 @@ def get_doc_names(spec: str, cur) -> tuple:
 
 
 @connect_and_close
-def get_doc_id(email:str, cur) -> int:
+def get_doc_id(email: str, cur) -> int:
     """
     gets the doc's UID from the email
     :param email: str, email of doctor
     :param cur: sqlite cursor object
     :return: int, UID from doctor
     """
-    return cur.execute("SELECT UID from Doctors where email = ?", (email, )).fetchone()[0]
+    return cur.execute("SELECT UID from Doctors where email = ?", (email,)).fetchone()[0]
+
 
 @connect_and_close
 def get_appointments(doc_id: int, cur) -> json:
@@ -140,7 +170,7 @@ def get_appointments(doc_id: int, cur) -> json:
     :return: json
     """
     return cur.execute(
-        "SELECT appointment FROM Doctors where UID = ?;", (doc_id, )
+        "SELECT appointment FROM Doctors where UID = ?;", (doc_id,)
     ).fetchone()[0]
 
 
@@ -152,7 +182,8 @@ def get_name_patient(email: str, cur) -> str:
     :param cur: sqlite cursor object
     :return: str
     """
-    return cur.execute(f"SELECT name from Patients where email = ?;", (email, )).fetchone()[0]
+    return cur.execute(f"SELECT name from Patients where email = ?;", (email,)).fetchone()[0]
+
 
 @connect_and_close
 def get_name_doc(doc_id_or_mail: int or str, cur) -> str:
@@ -167,6 +198,7 @@ def get_name_doc(doc_id_or_mail: int or str, cur) -> str:
     if isinstance(doc_id_or_mail, str):
         return cur.execute(f"SELECT name from Doctors where email = ?;", (doc_id_or_mail,)).fetchone()[0]
 
+
 @connect_and_close
 def get_phone_patient(email: str, cur) -> int:
     """
@@ -175,7 +207,7 @@ def get_phone_patient(email: str, cur) -> int:
     :param cur: sqlite cursor object
     :return: int, phone number
     """
-    return cur.execute(f"SELECT Contact_No from Patients where email = ?;", (email, )).fetchone()[0]
+    return cur.execute(f"SELECT Contact_No from Patients where email = ?;", (email,)).fetchone()[0]
 
 
 @connect_commit_close
@@ -206,7 +238,9 @@ if __name__ == "__main__":
     print("========Testing JSON========")
     print(get_appointments(2))
     print("setting appointments")
-    test_json = {'upcoming_appointments': [{'doc_id': 1, 'name_of_patient': 'Yash', 'time': '2021-02-14T02:00:00', 'contact_number': 1234567891, 'symptoms': 'pls help me 😢'}]}
+    test_json = {'upcoming_appointments': [
+        {'doc_id': 1, 'name_of_patient': 'Yash', 'time': '2021-02-14T02:00:00', 'contact_number': 1234567891,
+         'symptoms': 'pls help me 😢'}]}
     set_appointments(2, test_json)
     print("after setting appointments:")
     print(get_appointments(2))

@@ -23,7 +23,13 @@ init(autoreset=True)
 # Creating the logger filter class
 class IPFilter(logging.Filter):
     def filter(self, record):
-        record.ip_address = Fore.LIGHTWHITE_EX + request.remote_addr if request else ""
+        try:
+            email = session['username']
+        except KeyError as e:
+            print(Fore.RED + "this happened:", e)
+            email = ""
+
+        record.ip_address = Fore.LIGHTBLUE_EX + request.remote_addr if request else "" + f"[{email}]"
         return True
 
 
@@ -43,7 +49,7 @@ def create_app():
     app.config["SEND_FILE_MAX_AGE_DEFAULT"] = 0
     # This line uses this secret key to sign the client-side cookies. set do 'dev' for testing only
     # TODO: when project is done, set this secret key to random bytes, everytime.
-    app.config["SECRET_KEY"] = 'dev'
+    app.config["SECRET_KEY"] = 'dev' # os.urandom(16)
     # ===================================================
 
     # Configure logging for app.logger
@@ -51,7 +57,7 @@ def create_app():
         logging.Formatter("%(ip_address)s - - [%(asctime)s] %(levelname)-6s [%(module)s.py -> %(funcName)s()]: "
                           "\"%(message)s\"",
                           datefmt="%d/%b/%Y %H:%M:%S"))
-    app.logger.setLevel(10)  # set logger to debug
+    app.logger.setLevel(20)  # set logger to debug
     app.logger.addFilter(IPFilter())
 
     # Registering the blueprints
