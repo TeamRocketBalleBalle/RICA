@@ -1,5 +1,7 @@
 from Back_End.common_modules import *
 from Database.Database_connection import get_name_doc
+from .doctor_helper import load_and_filter_appointments
+from datetime import datetime
 
 # Initialising the Blueprint
 bp = Blueprint("doctors", __name__, url_prefix="/doctors", static_folder='static')
@@ -34,5 +36,26 @@ def doctors_page() -> 'html':
     # TODO: show an alert at the top of the page if there's an upcoming appointment in the next 1-2 hour
     return render_template("doctor_landing_page.html", page_title=f"{PAGE_TITLE}s",
                            useBootstrap=True,
-                           doc_name = get_name_doc(session['username']),
+                           doc_name=get_name_doc(session['username']),
                            alternateText=alternate_text)
+
+
+@bp.route('appointments')
+def appointments() -> 'html':
+    current_app.logger.info(Fore.YELLOW + f"{session['username']} [{get_user_type(session['username'])}]"
+                            + " accessed their appointments")
+    response = load_and_filter_appointments(session["username"])
+    current_app.logger.debug(Fore.LIGHTMAGENTA_EX + f"appointment data sent: {response}")
+    display_table = False
+    if response:
+        display_table = True
+    return render_template("doctors/response_summary_appointment.html",
+                           page_title="Your Appointments",
+                           display_table=display_table,
+                           appointment_data=response
+                           )
+
+
+@bp.app_template_filter('formatdatetime')
+def format_datetime(value):
+    return datetime.fromisoformat(value).strftime("%H:%M , %A %d/%m/%y")

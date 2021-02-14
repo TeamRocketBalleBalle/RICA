@@ -1,0 +1,31 @@
+.tables
+       {
+    border: 1px solid black;
+    backgroundcolor: aquamarine;
+    width: 20%;
+    background: linear-gradient(90deg, rgb(72, 176, 224) 0%,
+                    rgb(255,255,255) 50%, rgb(72, 176, 224) 100%)
+                    
+  }
+  
+.cover-img{
+  position: relative;
+  left: 25%;
+  
+}
+.cover-img img{
+  filter: blur(5px);
+}
+body{
+
+    background: linear-gradient(90deg, rgb(72, 176, 224) 0%,
+                    rgb(255,255,255) 50%, rgb(72, 176, 224) 100%);
+}
+.back_button{
+  position: absolute;
+  left: 19%;
+  
+}
+*{
+  overflow: hidden;
+}
