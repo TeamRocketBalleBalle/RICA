@@ -22,7 +22,7 @@ def load_and_filter_appointments(email: str) -> dict:
     update_appointments(doc_id)
 
     # now load the new appointments from DB
-    return get_appointments(doc_id)
+    return json.loads(get_appointments(doc_id))
 
 
 # TODO: remove this test argument one the testing is done
@@ -41,18 +41,24 @@ def update_appointments(doc_id: int, test=None) -> None:
       to `past_appointments` if their date has passed
     - dump that json back to the DB
     """
-    appointment_json: dict = dict()
+    appointments_json: dict = dict()
     if not test:
-        appointments_json = get_appointments(doc_id)
+        appointments_json = json.loads(get_appointments(doc_id))
     else:
         appointments_json = test
 
+    if not test:
+        current_app.logger.debug(f"unfiltered json from DB: {appointments_json}")
     # if the appointments_json is empty, then exit the function.
     # we're done over here 😤
     if "upcoming_appointments" not in appointments_json:
+        if not test:
+            current_app.logger.debug(f"no 'upcoming_appointments' key in DB, nothing changed...")
         return None
     # if the upcoming_appointments list is empty [cuz, there's no appointment for them], then also, we're done
     elif not appointments_json["upcoming_appointments"]:
+        if not test:
+            current_app.logger.debug(f"'upcoming_appointments' list empty, nothing changed...")
         return None
     # now we know there's some processing to be done * cracks knuckles *
     # start iterating through that list
@@ -60,7 +66,7 @@ def update_appointments(doc_id: int, test=None) -> None:
     past_appointments = []
     length_of_upcoming = len(appointments_json["upcoming_appointments"])
     for index, appointment_data in enumerate(
-        appointments_json["upcoming_appointments"]
+            appointments_json["upcoming_appointments"]
     ):
         date = appointment_data["time"]
 
@@ -79,8 +85,12 @@ def update_appointments(doc_id: int, test=None) -> None:
     # now create that updated json file.
     appointments_json["upcoming_appointments"] = upcoming_appointments_copy
     appointments_json["past_appointments"] = (
-        appointments_json.setdefault("past_appointments", list()) + past_appointments
+            appointments_json.setdefault("past_appointments", list()) + past_appointments
     )
+
+    # now we sort those two bad boys by time
+    appointments_json["upcoming_appointments"] = sort_by_time(appointments_json["upcoming_appointments"])
+    appointments_json["past_appointments"] = sort_by_time(appointments_json["past_appointments"])
 
     if test:
         return appointments_json
@@ -88,11 +98,12 @@ def update_appointments(doc_id: int, test=None) -> None:
     # log what we've done:
     if not test:
         current_app.logger.info(Fore.LIGHTCYAN_EX +
-                                f"Moved {length_of_upcoming - len(appointments_json['updated_appointments'])}"
+                                f"Moved {length_of_upcoming - len(appointments_json['upcoming_appointments'])}"
                                 + " to the past")
+        current_app.logger.debug(f"Final JSON: {appointments_json}")
 
     # now at last, we push the new json to the database
-    set_appointments(doc_id, appointment_json)
+    set_appointments(doc_id, appointments_json)
 
 
 def appointment_passed(appointment_date: str) -> bool:
@@ -103,6 +114,25 @@ def appointment_passed(appointment_date: str) -> bool:
     :return: bool, True if appointment time has passed, False if date is in near future
     """
     return datetime.datetime.fromisoformat(appointment_date) < datetime.datetime.now()
+
+
+def sort_by_time(appointment_list: list) -> list:
+    """
+    parses the json into jinja + programmer + logs friendly format
+    :param appointment_list: the list of appointments which will be sorted here.
+    :return: list
+    """
+    return sorted(appointment_list, key=_t)
+
+
+def _t(element):
+    """
+    the element json's list to be sorted
+    only to be used by the sorted function
+    :param element: the list of appointment data dictionaries
+    :return: datetime
+    """
+    return datetime.datetime.fromisoformat(element['time'])
 
 
 if __name__ == "__main__":

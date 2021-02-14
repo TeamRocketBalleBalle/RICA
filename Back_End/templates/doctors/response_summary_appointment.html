@@ -1,0 +1,52 @@
+{% extends "base_navbar.html" %}
+
+{% block CSS_File %}
+<link rel="stylesheet" href="static/doctors/style.css" />
+<link rel="stylesheet" href="static/doctors/response_summary.css" />
+{% endblock %}
+
+{% block main %}
+<br><br>
+<div class="back_button">
+  <a href="/doctors">
+    <button class="home">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#687CFC">
+        <path
+          d="M0 12c0 6.627 5.373 12 12 12s12-5.373 12-12-5.373-12-12-12-12 5.373-12 12zm7.58 0l5.988-5.995 1.414 1.416-4.574 4.579 4.574 4.59-1.414 1.416-5.988-6.006z" />
+      </svg>
+    </button>
+  </a>
+
+  <br>
+  <section>
+    <br><br><br><br>
+    {% if display_table %}
+    <table style="min-width: 130vh; min-height: 50vh;" class="tables" border="">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Symptoms</th>
+          <th>Contact Number</th>
+          <th>Date and Time</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for table_data in appointment_data["upcoming_appointments"] %}
+      <tr>
+          <td>{{ table_data["name_of_patient"] }}</td>
+          <td>{{ table_data["symptoms"] }}</td>
+          <td>{{ table_data["contact_number"] }}</td>
+          <td>{{ table_data["time"]|formatdatetime }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+    Nothing to show here, people are healthy! You have no upcoming appointments 😀
+    {% endif %}
+    <div class="cover-img">
+      <img src="static/assets/LabCoatHumanCentered.svg" alt="Artistic Doctor" />
+    </div>
+  </section>
+</div>
+{% endblock %}
