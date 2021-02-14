@@ -122,6 +122,16 @@ def get_doc_names(spec: str, cur) -> tuple:
 
 
 @connect_and_close
+def get_doc_id(email:str, cur) -> int:
+    """
+    gets the doc's UID from the email
+    :param email: str, email of doctor
+    :param cur: sqlite cursor object
+    :return: int, UID from doctor
+    """
+    return cur.execute("SELECT UID from Doctors where email = ?", (email, ))
+
+@connect_and_close
 def get_appointments(doc_id: int, cur) -> json:
     """
     returns the json of appointments of a doctor of given doc_id
