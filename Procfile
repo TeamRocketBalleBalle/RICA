@@ -1,1 +1,1 @@
-web: waitress-serve --call "Back_End:create_app"
+web: waitress-serve --port $PORT --call "Back_End:create_app"
