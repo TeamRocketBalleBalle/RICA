@@ -17,7 +17,7 @@ cur.execute("""CREATE TABLE Doctors(
     Contact_No INTEGER,
     specialization TEXT,
     loc TEXT,
-    pass TEXT,
+    password TEXT,
     Year INTEGER,
     appointment BLOB,
     UID INTEGER

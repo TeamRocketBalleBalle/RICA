@@ -89,7 +89,7 @@ def check_existence(em: str, cur):
     # os.chdir("./RICA")
     # print(f"databse_connection ke andar: {os.getcwd()}")
     # breakpoint()
-    cur.execute(f'SELECT * FROM Profiles WHERE email = \"{em}\"')
+    cur.execute(f'SELECT * FROM Profiles WHERE email = ?;', (em, ))
     return bool(cur.fetchall())
 
 
