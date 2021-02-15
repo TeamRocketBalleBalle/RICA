@@ -20,7 +20,7 @@ This Repo will be used by some "_ultra pro max lite_" minecraft players to build
       - Alternatively, you can run them from the repo's root directory, by opening the terminal in [RICA](RICA) \
       and executing `python -m Back_End.app` or `python -m Back_End.__init__`
 
-### [To run a production server](https://flask.palletsprojects.com/en/1.1.x/tutorial/deploy/#run-with-a-production-server)
+### [To run a production server](https://flask.palletsprojects.com/en/1.1.x/tutorial/deploy/#run-with-a-production-server) **[RECOMMENDED]**
 
   - Open terminal in repository root
   - Run the following: `waitress-serve --call "Back_End:create_app"`
