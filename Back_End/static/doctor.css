@@ -5,10 +5,10 @@
     height: auto;
     width: auto;
 }
-/*body {
+body {
     background: linear-gradient(90deg, rgb(54, 154, 148) 0%,
                     rgb(37, 209, 145) 35%, rgb(54, 154, 148) 100%) !important;
-} */
+} 
 .But{
     position:absolute;
     left:50% ;
