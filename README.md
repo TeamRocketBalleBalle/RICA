@@ -31,7 +31,7 @@ This Repo will be used by some "_ultra pro max lite_" minecraft players to build
   - Run the following: `waitress-serve --call "Back_End:create_app"`
   - A production server will start automatically now
 
-**[PS: you might want to run the development server instead]**
+**[PS: you might want to run the production server instead]**
 
 ------
 ## Check out the team:
