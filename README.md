@@ -4,7 +4,9 @@
 
 <img src="https://cdnb.artstation.com/p/assets/images/images/009/032/679/large/sean-o-neill-team-rocket-logo.jpg" width="50px" heigh="50px" /> [![Heroku](https://pyheroku-badge.herokuapp.com/?app=rica-app&style=flat)](http://bit.ly/RICA-app-heorku) 
 ![Created Badge](https://badges.pufler.dev/created/TeamRocketBalleBalle/RICA)
-![Updated Badge](https://badges.pufler.dev/updated/TeamRocketBalleBalle/RICA)
+![Updated Badge](https://img.shields.io/github/last-commit/TeamRocketBalleBalle/RICA?color=%234CC61E&label=Last%20Updated&logoColor=%23525252)
+![Github Fact 1](https://img.shields.io/github/languages/code-size/TeamRocketBalleBalle/RICA?color=%234BC51D)
+![Github Fact 2](https://img.shields.io/github/repo-size/TeamRocketBalleBalle/RICA?color=%234BC51D)
 
 ---
 
